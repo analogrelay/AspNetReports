@@ -1,0 +1,10 @@
+{
+    "name": "aspnet",
+    "repositories": [
+        "aspnet/AspNetCore",
+        "aspnet/Extensions"
+    ],
+    "internalGitHubTeams": [
+        "aspnet-push"
+    ]
+}

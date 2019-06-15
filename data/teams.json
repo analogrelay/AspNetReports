@@ -1,0 +1,11 @@
+[
+    {
+        "name": "KCore",
+        "gitHubTeam": "kcore",
+        "areaLabels": [
+            "area-signalr",
+            "area-servers",
+            "area-hosting"
+        ]
+    }
+]
