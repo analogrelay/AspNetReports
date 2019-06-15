@@ -2,7 +2,22 @@
 
 ## Overview
 
-To be supplied
+This week we took a big chunk of preview 7 work!
+
+Community Contributions this week:
+* Ben Adams and Günther Foidl continued their quest for better performance across the stack.
+* Tom Deseyn from RedHat contributed systemd support for the Generic Host, to match our existing Windows Services support.
+* We received a number of contributions from [Kahbazi](https://github.com/Kahbazi) and [wu-yafeng](https://github.com/wu-yafeng) to clean up some things that didn't align with docs, or framework guidelines.
+
+Just _some_ of the work our team has been doing:
+* We updated the SignalR client to cross-target `netstandard2.0` and `netstandard2.1` and continuing
+* We finally knocked down a pesky race condition in Kestrel's implementation of the response body pipe.
+* We taught the SignalR JavaScript and Java clients to support changing the URL, while disconnected, without having to reinitialize the whole connection. (.NET client work is blocked on some planned client-side refactoring)
+* We added guaranteed ordering to the SignalR JavaScript client (other clients already had this behavior) so that even if you don't `await` the `.send` call, messages won't be reordered.
+* We added benchmarks for the Request Queuing middleware and started exploring alternate queuing strategies.
+* We updated the `dev-certs` tool to support "upgrading" older certificates to the new parameters added earlier in 3.0.
+* We're working on documenting how to enable Kerberos auth on Linux.
+* We added more documentation on `IAsyncEnumerable` in SignalR
 
 ## Important Dates
 
