@@ -21,7 +21,7 @@ Thanks to all our external contributors!
 {{#ExternalContributors}}
 * [<img src="{{AvatarUrl}}" width="20" height="20" /> {{DisplayName}}]({{ProfileUrl}})
 {{#PullRequests}}
-    * [{{RepoOwner}}/{{RepoName}}#{{Number}} {{Title}}]({{Url}})
+    * [**{{RepoOwner}}/{{RepoName}}#{{Number}}** {{Title}}]({{Url}})
 {{/PullRequests}}
 {{/ExternalContributors}}
 
@@ -30,7 +30,7 @@ Thanks to all our external contributors!
 {{#InternalContributors}}
 * [<img src="{{AvatarUrl}}" width="20" height="20" /> {{DisplayName}}]({{ProfileUrl}})
 {{#PullRequests}}
-    * [{{RepoOwner}}/{{RepoName}}#{{Number}} {{Title}}]({{Url}})
+    * [**{{RepoOwner}}/{{RepoName}}#{{Number}}** {{Title}}]({{Url}})
 {{/PullRequests}}
 {{/InternalContributors}}
 
@@ -43,6 +43,7 @@ Thanks to all our external contributors!
 {{#Areas}}
 | `{{Label}}` | {{Open}} | {{Closed}} | {{Incomplete}} | {{Accepted}} |
 {{/Areas}}
+| **Total** | {{TotalOpen}} | {{TotalClosed}} | {{TotalIncomplete}} | {{TotalAccepted}} |
 
 ## Burndown
 

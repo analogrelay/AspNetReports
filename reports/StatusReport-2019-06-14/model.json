@@ -433,5 +433,9 @@
       "incomplete": 5,
       "accepted": 1
     }
-  ]
+  ],
+  "totalOpen": 22,
+  "totalClosed": 24,
+  "totalIncomplete": 46,
+  "totalAccepted": 2
 }

@@ -12,6 +12,10 @@ namespace Internal.AspNetCore.ReportGenerator.Reports
         public IList<ContributorModel>? ExternalContributors { get; set; }
         public IList<ContributorModel>? InternalContributors { get; set; }
         public IList<AreaSummaryModel>? Areas { get; set; }
+        public int TotalOpen { get; set; }
+        public int TotalClosed { get; set; }
+        public int TotalIncomplete => TotalOpen + TotalClosed;
+        public int TotalAccepted { get; set; }
     }
 
     public class AreaSummaryModel

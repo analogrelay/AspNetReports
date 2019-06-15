@@ -41,7 +41,7 @@ namespace Internal.AspNetCore.ReportGenerator.Reports
             }
 
             await GeneratePullRequestInfoAsync(github, data, team, model, cache, range, repos);
-            model.Areas = await GenerateIssueInfoAsync(github, team, repos, milestone);
+            await GenerateIssueInfoAsync(github, team, repos, milestone, model);
 
             return model;
         }
@@ -69,9 +69,9 @@ namespace Internal.AspNetCore.ReportGenerator.Reports
             };
         }
 
-        private static async Task<IList<AreaSummaryModel>> GenerateIssueInfoAsync(GitHubClient github, Data.Team team, RepositoryCollection repos, string milestone)
+        private static async Task GenerateIssueInfoAsync(GitHubClient github, Data.Team team, RepositoryCollection repos, string milestone, StatusReportModel model)
         {
-            var areaSummaries = new List<AreaSummaryModel>();
+            model.Areas = new List<AreaSummaryModel>();
             foreach (var area in team.AreaLabels)
             {
                 var query = new SearchIssuesRequest()
@@ -90,20 +90,23 @@ namespace Internal.AspNetCore.ReportGenerator.Reports
                 {
                     if(result.State == ItemState.Open)
                     {
+                        model.TotalOpen += 1;
                         open += 1;
                     }
                     else if(result.Labels.Any(l => l.Name.Equals("accepted")))
                     {
                         Debug.Assert(result.State == ItemState.Closed);
+                        model.TotalAccepted += 1;
                         accepted += 1;
                     }
                     else
                     {
                         Debug.Assert(result.State == ItemState.Closed);
+                        model.TotalClosed += 1;
                         closed += 1;
                     }
                 }
-                areaSummaries.Add(new AreaSummaryModel()
+                model.Areas.Add(new AreaSummaryModel()
                 {
                     Label = area,
                     Open = open,
@@ -111,7 +114,6 @@ namespace Internal.AspNetCore.ReportGenerator.Reports
                     Accepted = accepted
                 });
             }
-            return areaSummaries;
         }
 
         private static async Task GeneratePullRequestInfoAsync(GitHubClient github, DataStore data, Data.Team team, StatusReportModel model, GitHubCache cache, DateRange range, RepositoryCollection repos)
