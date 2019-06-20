@@ -141,6 +141,31 @@
                 </tr>
             </tbody>
         </table>
+
+        <h3 class="pt-2">Burndown</h3>
+
+        <canvas id="burndown-chart-host"></canvas>
+
+        {{#Burndown}}
+        <table class="table">
+            <thead>
+                <th scope="col">Date</th>
+                {{#Areas}}
+                <th scope="col">{{.}}</th>
+                {{/Areas}}
+            </thead>
+            <tbody>
+                {{#Weeks}}
+                <tr>
+                    <td scope="row"><strong>{{Date}}</strong></td>
+                    {{#Areas}}
+                    <td>{{Open}}</td>
+                    {{/Areas}}
+                </tr>
+                {{/Weeks}}
+            </tbody>
+        </table>
+        {{/Burndown}}
     </div>
 
     <!-- Optional JavaScript -->
@@ -154,6 +179,37 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"
+        integrity="sha256-xKeoJ50pzbUGkpQxDYHD7o7hxe0LaOGeguUidbq6vis=" crossorigin="anonymous"></script>
+
+    {{#Burndown}}
+    {{=(( ))=}}
+    <script>
+        // Raw Burndown Data
+        window.burndownData = {
+            areas: [
+                ((#Areas))
+                "((.))",
+                ((/Areas))
+            ],
+            weeks: [
+                ((#Weeks))
+                {
+                    week: "((Date))",
+                    areas: [
+                        ((#Areas))
+                        { label: "((Label))", open: ((Open)) },
+                        ((/Areas))
+                    ],
+                },
+                ((/Weeks))
+            ]
+        };
+    </script>
+    ((={{ }}=))
+    {{/Burndown}}
+
+    <script src="/js/burndown-chart.js"></script>
 </body>
 
 </html>

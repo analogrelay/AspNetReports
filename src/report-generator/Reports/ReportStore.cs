@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using Internal.AspNetCore.ReportGenerator.Data;
 using Newtonsoft.Json;
@@ -18,6 +17,20 @@ namespace Internal.AspNetCore.ReportGenerator.Reports
         {
             _reportsDirectory = reportsDirectory;
             _templatesDirectory = templatesDirectory;
+        }
+        
+        public Task<IReadOnlyList<string>> LoadReportNamesAsync(string basePath)
+        {
+            var reportDir = Path.Combine(_reportsDirectory, basePath);
+            return Task.FromResult<IReadOnlyList<string>>(Directory.GetDirectories(basePath));
+        }
+
+        public async Task<T> LoadReportModelAsync<T>(string reportName)
+        {
+            var reportDir = Path.Combine(_reportsDirectory, reportName);
+            var modelPath = Path.Combine(reportDir, "model.json");
+            var json = await File.ReadAllTextAsync(modelPath);
+            return JsonConvert.DeserializeObject<T>(json);
         }
 
         public async Task SaveReportAsync(string name, string outputFileName, string templateFileName, object model)

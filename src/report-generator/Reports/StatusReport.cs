@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -15,26 +16,23 @@ namespace Internal.AspNetCore.ReportGenerator.Reports
     {
         private static readonly Regex _repoNameFromPRUrlExtractor = new Regex(@"^https://github.com/(?<owner>.*)/(?<name>.*)/pull/\d+$");
 
-        public static async Task<StatusReportModel> GenerateReportModelAsync(GitHubClient github, DataStore data, Data.Team team, string milestone, DateTime? startDate, DateTime? endDate, ILoggerFactory loggerFactory)
+        public static async Task<StatusReportModel> GenerateReportModelAsync(GitHubClient github, DataStore data, Data.Team team, string milestone, DateTime startDate, DateTime endDate, ILoggerFactory loggerFactory)
         {
             var logger = loggerFactory.CreateLogger<StatusReport>();
             var model = new StatusReportModel();
             model.Name = team.Name;
-            model.ReportDate = DateTime.Now.ToString("yyyy-MM-dd");
+            model.ReportDate = endDate.ToString("yyyy-MM-dd");
 
             var cache = new GitHubCache(github, data, loggerFactory.CreateLogger<GitHubCache>());
 
-            // Establish the time window
-            var now = DateTime.Now;
-            endDate = endDate ?? new DateTime(now.Year, now.Month, now.Day, 0, 0, 0, DateTimeKind.Local);
-            startDate = startDate ?? (endDate.Value.AddDays(-7));
-            var range = new DateRange(startDate.Value, endDate.Value);
+            // Establish the time window. Exclude the endDate.
+            var range = new DateRange(startDate, endDate.AddDays(-1));
             logger.LogInformation("Using date range {Range}", range);
 
             var releaseMilestone = data.GetMilestone(milestone);
             model.Milestone = new List<MilestoneDates>()
             {
-                ComputeMilestoneDates(data, endDate.Value, releaseMilestone, logger)
+                ComputeMilestoneDates(data, endDate, releaseMilestone, logger)
             };
 
             var repos = new RepositoryCollection();
@@ -46,7 +44,65 @@ namespace Internal.AspNetCore.ReportGenerator.Reports
             await GeneratePullRequestInfoAsync(github, data, team, model, cache, range, repos, logger);
             await GenerateIssueInfoAsync(github, team, repos, milestone, model, logger);
 
+            // Try to render burndown data
+            var burndown = await data.LoadBurndownAsync(milestone);
+
+            // Check for burndown data for the end date
+            if (!burndown.Weeks.Any(w => w.EndDate.Year == endDate.Year && w.EndDate.Month == endDate.Month && w.EndDate.Day == endDate.Day))
+            {
+                logger.LogWarning("No burndown data is associated with today's date! The burndown data in this report may be out-of-date.");
+            }
+
+            model.Burndown = GenerateBurndownModel(team, burndown);
+
             return model;
+        }
+
+        private static BurndownModel GenerateBurndownModel(Data.Team team, Burndown burndown)
+        {
+            var burndownModel = new BurndownModel()
+            {
+                Areas = team.AreaLabels.OrderBy(l => l).ToList(),
+                Weeks = new List<WeekBurndownModel>(),
+            };
+
+            foreach (var week in burndown.Weeks)
+            {
+                var weekModel = new WeekBurndownModel()
+                {
+                    Date = week.EndDate.ToString("yyyy-MM-dd"),
+                    Areas = new List<AreaBurndownModel>(),
+                };
+                var areaDict = week.Areas.ToDictionary(a => a.Label);
+                foreach (var area in burndownModel.Areas)
+                {
+                    AreaBurndownModel areaModel;
+                    if (areaDict.TryGetValue(area, out var areaBurndown))
+                    {
+                        areaModel = new AreaBurndownModel()
+                        {
+                            Label = area,
+                            Open = areaBurndown.Open,
+                            Closed = areaBurndown.Closed,
+                            Accepted = areaBurndown.Accepted,
+                        };
+                    }
+                    else
+                    {
+                        areaModel = new AreaBurndownModel()
+                        {
+                            Label = area,
+                            Open = 0,
+                            Closed = 0,
+                            Accepted = 0,
+                        };
+                    }
+                    weekModel.Areas.Add(areaModel);
+                }
+                burndownModel.Weeks.Add(weekModel);
+            }
+
+            return burndownModel;
         }
 
         private static MilestoneDates ComputeMilestoneDates(DataStore data, DateTime endDate, ReleaseMilestone releaseMilestone, ILogger logger)
@@ -56,9 +112,9 @@ namespace Internal.AspNetCore.ReportGenerator.Reports
             var current = endDate;
             var workDays = 0;
             logger.LogDebug("Computing work days in {Milestone}...", releaseMilestone.Name);
-            while(current <= releaseMilestone.BranchCloses!.Value)
+            while (current <= releaseMilestone.BranchCloses!.Value)
             {
-                if(!data.IsHoliday(current, WorkLocation.US) && current.DayOfWeek != DayOfWeek.Sunday && current.DayOfWeek != DayOfWeek.Saturday)
+                if (!data.IsHoliday(current, WorkLocation.US) && current.DayOfWeek != DayOfWeek.Sunday && current.DayOfWeek != DayOfWeek.Saturday)
                 {
                     workDays += 1;
                 }
@@ -86,7 +142,7 @@ namespace Internal.AspNetCore.ReportGenerator.Reports
                     Milestone = milestone,
                     Repos = repos,
                 };
-                var results = await ExecuteGitHubQueryAsync(github, query, logger);
+                var results = await github.SearchIssuesLogged(query, logger);
 
                 var open = 0;
                 var closed = 0;
@@ -167,7 +223,7 @@ namespace Internal.AspNetCore.ReportGenerator.Reports
         private static PullRequestSummaryModel CreatePrSummary(Issue i)
         {
             var match = _repoNameFromPRUrlExtractor.Match(i.HtmlUrl);
-            if(!match.Success)
+            if (!match.Success)
             {
                 throw new InvalidDataException($"Bad PR HtmlUrl: {i.HtmlUrl}");
             }
@@ -178,7 +234,7 @@ namespace Internal.AspNetCore.ReportGenerator.Reports
                 RepoName = match.Groups["name"].Value,
                 Number = i.Number,
                 Title = i.Title,
-                Url = i.Url,
+                Url = i.HtmlUrl,
             };
         }
 
@@ -194,7 +250,7 @@ namespace Internal.AspNetCore.ReportGenerator.Reports
                     Merged = range,
                     Repos = repos,
                 };
-                var results = await ExecuteGitHubQueryAsync(github, query, logger);
+                var results = await github.SearchIssuesLogged(query, logger);
                 mergedPrs.UnionWith(results.Items);
             }
         }
@@ -210,19 +266,9 @@ namespace Internal.AspNetCore.ReportGenerator.Reports
                     Merged = range,
                     Repos = repos,
                 };
-                var results = await ExecuteGitHubQueryAsync(github, query, logger);
+                var results = await github.SearchIssuesLogged(query, logger);
                 mergedPrs.UnionWith(results.Items);
             }
-        }
-
-        private static async Task<SearchIssuesResult> ExecuteGitHubQueryAsync(GitHubClient github, SearchIssuesRequest query, ILogger logger)
-        {
-            var queryText = string.Join(" ", query.MergedQualifiers());
-            logger.LogInformation("Executing GitHub query: {Query}", queryText);
-            var results = await github.Search.SearchIssues(query);
-            var apiInfo = github.GetLastApiInfo();
-            logger.LogInformation("Received {Count} results. Rate Limit Remaining {Remaining} (Resets At: {ResetAt})", results.TotalCount, apiInfo.RateLimit.Remaining, apiInfo.RateLimit.Reset.LocalDateTime);
-            return results;
         }
     }
 }

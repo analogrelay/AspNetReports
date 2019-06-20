@@ -9,6 +9,7 @@ namespace Internal.AspNetCore.ReportGenerator
     [Command(Description = "ASP.NET Report Generator")]
     [Subcommand(typeof(DumpDataCommand))]
     [Subcommand(typeof(StatusCommand))]
+    [Subcommand(typeof(BurndownCommand))]
     internal class Program
     {
         private static int Main(string[] args)
