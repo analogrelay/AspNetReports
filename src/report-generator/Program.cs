@@ -10,6 +10,7 @@ namespace Internal.AspNetCore.ReportGenerator
     [Subcommand(typeof(DumpDataCommand))]
     [Subcommand(typeof(StatusCommand))]
     [Subcommand(typeof(BurndownCommand))]
+    [Subcommand(typeof(IndexCommand))]
     internal class Program
     {
         private static int Main(string[] args)

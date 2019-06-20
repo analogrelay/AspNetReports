@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    {{> Header}}
+
+    <title>ASP.NET Core Status Reports</title>
+</head>
+
+<body>
+    {{> Nav}}
+
+    <div class="container pt-5">
+        <h1>ASP.NET Core Status Reports</h1>
+        {{#StatusReports}}
+        <h2>{{TeamName}}</h2>
+        <ul>
+            {{#Reports}}
+            <li>
+                <a href="{{Url}}">{{Name}}</a>
+            </li>
+            {{/Reports}}
+        </ul>
+        {{/StatusReports}}
+    </div>
+
+    {{> Scripts}}
+</body>
+
+</html>
