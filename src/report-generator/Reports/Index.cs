@@ -31,7 +31,7 @@ namespace Internal.AspNetCore.ReportGenerator.Reports
                         statusReportTeam.Reports.Add(new ReportModel()
                         {
                             Name = reportName,
-                            Url = $"/reports/status/{team.Name}/{reportName}",
+                            Url = $"reports/status/{team.Name}/{reportName}",
                         });
                     }
                 }
