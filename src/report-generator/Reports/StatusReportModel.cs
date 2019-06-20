@@ -32,6 +32,7 @@ namespace Internal.AspNetCore.ReportGenerator.Reports
         public string? AvatarUrl { get; set; }
         public string? DisplayName { get; set; }
         public string? ProfileUrl { get; set; }
+        public string? Login { get; set; }
         public IList<PullRequestSummaryModel>? PullRequests { get; set; }
     }
 

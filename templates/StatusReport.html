@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/site.css">
+
+    <title>{{Name}} Status Report ({{ReportDate}})</title>
+</head>
+
+<body>
+    <div class="container pt-5">
+        <h1>{{Name}} Status Report ({{ReportDate}})</h1>
+
+        <h2 class="pt-2">Overview</h2>
+
+        <p>
+            To be supplied
+        </p>
+
+        <h2 class="pt-2">Important Dates</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Milestone</th>
+                    <th scope="col">Branch Closes</th>
+                    <th scope="col">Work Days Remaining</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#Milestone}}
+                <tr>
+                    <th scope="row">{{Name}}</th>
+                    <td>{{BranchCloses}}</td>
+                    <td>{{WorkDaysRemaining}}</td>
+                </tr>
+                {{/Milestone}}
+            </tbody>
+        </table>
+
+        <h2 class="pt-2">External Contributors</h2>
+        <p>Thanks to all our external contributors this week!</p>
+
+        <div class="card-deck">
+            {{#ExternalContributors}}
+            <div class="card contributor-card">
+                <img class="card-img-top" src="{{AvatarUrl}}" alt="{{DisplayName}}">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{DisplayName}}
+                    </h5>
+                </div>
+            </div>
+            {{/ExternalContributors}}
+        </div>
+
+        <h2 class="pt-2">PRs Merged</h2>
+
+        <div class="row">
+            <div class="col-4">
+                <div id="pr-list" class="list-group" role="tablist">
+                    {{#ExternalContributors}}
+                    <a href="#pr-content-for-{{Login}}" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-{{Login}}" data-toggle="list" role="tab" aria-controls="{{Login}}">
+                        <img class="small-avatar" src="{{AvatarUrl}}" /> {{DisplayName}} <span
+                            class="badge badge-primary">External</span>
+                    </a>
+                    {{/ExternalContributors}}
+                    {{#InternalContributors}}
+                    <a href="#pr-content-for-{{Login}}" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-{{Login}}" data-toggle="list" role="tab" aria-controls="{{Login}}">
+                        <img class="small-avatar" src="{{AvatarUrl}}" /> {{DisplayName}}
+                    </a>
+                    {{/InternalContributors}}
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="tab-content" id="pr-content">
+                    {{#ExternalContributors}}
+                    <div class="tab-pane fade" id="pr-content-for-{{Login}}" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-{{Login}}">
+                        <ul>
+                            {{#PullRequests}}
+                            <li><a href="{{Url}}"><strong>{{RepoOwner}}/{{RepoName}}#{{Number}}</strong> {{Title}}</a>
+                            </li>
+                            {{/PullRequests}}
+                        </ul>
+                    </div>
+                    {{/ExternalContributors}}
+                    {{#InternalContributors}}
+                    <div class="tab-pane fade" id="pr-content-for-{{Login}}" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-{{Login}}">
+                        <ul>
+                            {{#PullRequests}}
+                            <li><a href="{{Url}}"><strong>{{RepoOwner}}/{{RepoName}}#{{Number}}</strong> {{Title}}</a>
+                            </li>
+                            {{/PullRequests}}
+                        </ul>
+                    </div>
+                    {{/InternalContributors}}
+                </div>
+            </div>
+        </div>
+
+        <h3 class="pt-2">Active Issues</h3>
+
+        <strong>Closed</strong> refers to issues that are closed but do not have the <code>accepted</code> label
+        applied.
+        <strong>Incomplete</strong> is the total of both <strong>Closed</strong> and <strong>Open</strong>.
+
+        <table class="table">
+            <thead>
+                <th scope="col">Area</th>
+                <th scope="col">Open</th>
+                <th scope="col">Closed</th>
+                <th scope="col">Incomplete</th>
+                <th scope="col">Accepted</th>
+            </thead>
+            <tbody>
+                {{#Areas}}
+                <tr>
+                    <th scope="row"><code>{{Label}}</code></th>
+                    <td>{{Open}}</td>
+                    <td>{{Closed}}</td>
+                    <td>{{Incomplete}}</td>
+                    <td>{{Accepted}}</td>
+                </tr>
+                {{/Areas}}
+                <tr class="table-info">
+                    <th scope="row">Total</th>
+                    <td>{{TotalOpen}}</td>
+                    <td>{{TotalClosed}}</td>
+                    <td>{{TotalIncomplete}}</td>
+                    <td>{{TotalAccepted}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

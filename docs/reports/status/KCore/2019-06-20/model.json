@@ -1,0 +1,388 @@
+{
+  "name": "KCore",
+  "reportDate": "2019-06-20",
+  "milestone": [
+    {
+      "name": "3.0.0-preview7",
+      "branchCloses": "2019-07-01",
+      "workDaysRemaining": 8
+    }
+  ],
+  "externalContributors": [
+    {
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/11557213?v=4",
+      "displayName": "Balint Farkas (BalintFarkas)",
+      "profileUrl": "https://github.com/BalintFarkas",
+      "login": "BalintFarkas",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11140,
+          "title": "Added CanCancelStartingConnectionAfterNegotiate (#10432)",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11140"
+        }
+      ]
+    }
+  ],
+  "internalContributors": [
+    {
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/4809660?v=4",
+      "displayName": "Mikael Mengistu (mikaelm12)",
+      "profileUrl": "https://github.com/mikaelm12",
+      "login": "mikaelm12",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11356,
+          "title": "Make SSEMessageFormatter internal and use new InternalsVisibleTo pattern",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11356"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11272,
+          "title": "Allow sending a Single null arg in Java client",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11272"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11162,
+          "title": "Clean up Pubternal Types in SignalR",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11162"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11102,
+          "title": "Add ability to change url in TS client",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11102"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/7574801?v=4",
+      "displayName": "Brennan (BrennanConroy)",
+      "profileUrl": "https://github.com/BrennanConroy",
+      "login": "BrennanConroy",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11330,
+          "title": "Update dev deps for SignalR",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11330"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11241,
+          "title": "Allow null arguments from HubConnection",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11241"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11191,
+          "title": "[TS] Remove extra negotiates from common scenarios",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11191"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11130,
+          "title": "Convert SignalR EventSource usage to new pattern",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11130"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 10540,
+          "title": "Target netstandard2.1 for SignalR client",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/10540"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11398,
+          "title": "Temporarily skip SignalR TS client tests",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11398"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/8302101?v=4",
+      "displayName": "Justin Kotalik (jkotalik)",
+      "profileUrl": "https://github.com/jkotalik",
+      "login": "jkotalik",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11394,
+          "title": "Remove copy race for IIS projects",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11394"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11199,
+          "title": "Always include ANCM in build output",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11199"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11198,
+          "title": "Always include ANCM in build output",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11198"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11109,
+          "title": "Convert TLS connection adapter to connection middleware",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11109"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11355,
+          "title": "Skip CORS tests",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11355"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11306,
+          "title": "Mark test as flaky",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11306"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11297,
+          "title": "Reduce logging branch path size.",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11297"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11235,
+          "title": "Add file manifest for runtime and targeting pack",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11235"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11153,
+          "title": "React to changes in Microsoft.NETCore.App",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11153"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11063,
+          "title": "Make CORS functional tests select different ports",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11063"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1821173?v=4",
+      "displayName": "Chris Ross (Tratcher)",
+      "profileUrl": "https://github.com/Tratcher",
+      "login": "Tratcher",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11300,
+          "title": "Implement IHttpResetFeature in Kestrel",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11300"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11193,
+          "title": "Implement Http/2 CompleteAsync",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11193"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11120,
+          "title": "Fail on startup for Http/2 HTTPS on Mac",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11120"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11238,
+          "title": " Update facebook APIs to v3.3",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11238"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/54385?v=4",
+      "displayName": "Stephen Halter (halter73)",
+      "profileUrl": "https://github.com/halter73",
+      "login": "halter73",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11294,
+          "title": "The TaskCompletionSource ctor takes Task*Creation*Options",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11294"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11065,
+          "title": "Work around potential race in PipeWriter Redux",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11065"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11152,
+          "title": "Add myself as a code owner of /src/Servers/",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11152"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/95136?v=4",
+      "displayName": "David Fowler (davidfowl)",
+      "profileUrl": "https://github.com/davidfowl",
+      "login": "davidfowl",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11257,
+          "title": "Kestrel API clean up based on review",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11257"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11256,
+          "title": "[Flaky test fix]: Wait for server connection to end",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11256"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11215,
+          "title": "Move TransportConnection to shared source",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11215"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11132,
+          "title": "Remove dependency on pipe events in HttpConnection",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11132"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11358,
+          "title": "Increase timeout to 30 seconds",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11358"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11211,
+          "title": "Hoist activity fields to the logging scope",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11211"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/6995051?v=4",
+      "displayName": "Javier Calvarro Nelson (javiercn)",
+      "profileUrl": "https://github.com/javiercn",
+      "login": "javiercn",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11148,
+          "title": "Move extension method out of Microsoft.AspNetCore",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11148"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/7574?v=4",
+      "displayName": "Andrew Stanton-Nurse (anurse)",
+      "profileUrl": "https://github.com/anurse",
+      "login": "anurse",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11123,
+          "title": "fix #11114 by setting DesignerCategory for WebHostService",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11123"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/13950346?v=4",
+      "displayName": "Dylan Dmitri Gray (DylanDmitri)",
+      "profileUrl": "https://github.com/DylanDmitri",
+      "login": "DylanDmitri",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11167,
+          "title": "Dylan/request queue di",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/11167"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 10907,
+          "title": "Overhead Benchmark for Request Throttling",
+          "url": "https://api.github.com/repos/aspnet/AspNetCore/issues/10907"
+        }
+      ]
+    }
+  ],
+  "areas": [
+    {
+      "label": "area-signalr",
+      "open": 7,
+      "closed": 13,
+      "incomplete": 20,
+      "accepted": 1
+    },
+    {
+      "label": "area-servers",
+      "open": 11,
+      "closed": 14,
+      "incomplete": 25,
+      "accepted": 0
+    },
+    {
+      "label": "area-hosting",
+      "open": 1,
+      "closed": 3,
+      "incomplete": 4,
+      "accepted": 1
+    }
+  ],
+  "totalOpen": 19,
+  "totalClosed": 30,
+  "totalIncomplete": 49,
+  "totalAccepted": 2
+}

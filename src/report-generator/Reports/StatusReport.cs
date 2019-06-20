@@ -6,32 +6,35 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Internal.AspNetCore.ReportGenerator.Data;
+using Microsoft.Extensions.Logging;
 using Octokit;
 
 namespace Internal.AspNetCore.ReportGenerator.Reports
 {
-    public static class StatusReport
+    public class StatusReport
     {
         private static readonly Regex _repoNameFromPRUrlExtractor = new Regex(@"^https://github.com/(?<owner>.*)/(?<name>.*)/pull/\d+$");
 
-        public static async Task<StatusReportModel> GenerateReportModelAsync(GitHubClient github, DataStore data, Data.Team team, string milestone, DateTime? startDate, DateTime? endDate)
+        public static async Task<StatusReportModel> GenerateReportModelAsync(GitHubClient github, DataStore data, Data.Team team, string milestone, DateTime? startDate, DateTime? endDate, ILoggerFactory loggerFactory)
         {
+            var logger = loggerFactory.CreateLogger<StatusReport>();
             var model = new StatusReportModel();
             model.Name = team.Name;
             model.ReportDate = DateTime.Now.ToString("yyyy-MM-dd");
 
-            var cache = new GitHubCache(github, data);
+            var cache = new GitHubCache(github, data, loggerFactory.CreateLogger<GitHubCache>());
 
             // Establish the time window
             var now = DateTime.Now;
             endDate = endDate ?? new DateTime(now.Year, now.Month, now.Day, 0, 0, 0, DateTimeKind.Local);
             startDate = startDate ?? (endDate.Value.AddDays(-7));
             var range = new DateRange(startDate.Value, endDate.Value);
+            logger.LogInformation("Using date range {Range}", range);
 
             var releaseMilestone = data.GetMilestone(milestone);
             model.Milestone = new List<MilestoneDates>()
             {
-                ComputeMilestoneDates(data, endDate.Value, releaseMilestone)
+                ComputeMilestoneDates(data, endDate.Value, releaseMilestone, logger)
             };
 
             var repos = new RepositoryCollection();
@@ -40,18 +43,19 @@ namespace Internal.AspNetCore.ReportGenerator.Reports
                 repos.Add(repo.Owner, repo.Name);
             }
 
-            await GeneratePullRequestInfoAsync(github, data, team, model, cache, range, repos);
-            await GenerateIssueInfoAsync(github, team, repos, milestone, model);
+            await GeneratePullRequestInfoAsync(github, data, team, model, cache, range, repos, logger);
+            await GenerateIssueInfoAsync(github, team, repos, milestone, model, logger);
 
             return model;
         }
 
-        private static MilestoneDates ComputeMilestoneDates(DataStore data, DateTime endDate, ReleaseMilestone releaseMilestone)
+        private static MilestoneDates ComputeMilestoneDates(DataStore data, DateTime endDate, ReleaseMilestone releaseMilestone, ILogger logger)
         {
             // Identify the number of working days between the end date and the start date
             // Look. I know this could be done with cool math, but this is the easiest thing right now :). We can optimize later
             var current = endDate;
             var workDays = 0;
+            logger.LogDebug("Computing work days in {Milestone}...", releaseMilestone.Name);
             while(current <= releaseMilestone.BranchCloses!.Value)
             {
                 if(!data.IsHoliday(current, WorkLocation.US) && current.DayOfWeek != DayOfWeek.Sunday && current.DayOfWeek != DayOfWeek.Saturday)
@@ -60,6 +64,7 @@ namespace Internal.AspNetCore.ReportGenerator.Reports
                 }
                 current = current.AddDays(1);
             }
+            logger.LogDebug("Computed work days in {Milestone}", releaseMilestone.Name);
 
             return new MilestoneDates()
             {
@@ -69,7 +74,7 @@ namespace Internal.AspNetCore.ReportGenerator.Reports
             };
         }
 
-        private static async Task GenerateIssueInfoAsync(GitHubClient github, Data.Team team, RepositoryCollection repos, string milestone, StatusReportModel model)
+        private static async Task GenerateIssueInfoAsync(GitHubClient github, Data.Team team, RepositoryCollection repos, string milestone, StatusReportModel model, ILogger logger)
         {
             model.Areas = new List<AreaSummaryModel>();
             foreach (var area in team.AreaLabels)
@@ -81,19 +86,19 @@ namespace Internal.AspNetCore.ReportGenerator.Reports
                     Milestone = milestone,
                     Repos = repos,
                 };
-                var results = await github.Search.SearchIssues(query);
+                var results = await ExecuteGitHubQueryAsync(github, query, logger);
 
                 var open = 0;
                 var closed = 0;
                 var accepted = 0;
-                foreach(var result in results.Items)
+                foreach (var result in results.Items)
                 {
-                    if(result.State == ItemState.Open)
+                    if (result.State == ItemState.Open)
                     {
                         model.TotalOpen += 1;
                         open += 1;
                     }
-                    else if(result.Labels.Any(l => l.Name.Equals("accepted")))
+                    else if (result.Labels.Any(l => l.Name.Equals("accepted")))
                     {
                         Debug.Assert(result.State == ItemState.Closed);
                         model.TotalAccepted += 1;
@@ -116,12 +121,12 @@ namespace Internal.AspNetCore.ReportGenerator.Reports
             }
         }
 
-        private static async Task GeneratePullRequestInfoAsync(GitHubClient github, DataStore data, Data.Team team, StatusReportModel model, GitHubCache cache, DateRange range, RepositoryCollection repos)
+        private static async Task GeneratePullRequestInfoAsync(GitHubClient github, DataStore data, Data.Team team, StatusReportModel model, GitHubCache cache, DateRange range, RepositoryCollection repos, ILogger logger)
         {
             // Collect merged PRs
             var mergedPrs = new HashSet<Issue>(IssueByIdEqualityComparer.Instance);
-            await CollectByAreas(github, team, range, repos, mergedPrs);
-            await CollectByAuthor(data, github, cache, team, range, repos, mergedPrs);
+            await CollectByAreas(github, team, range, repos, mergedPrs, logger);
+            await CollectByAuthor(data, github, cache, team, range, repos, mergedPrs, logger);
 
             // Group by author
             var groupedPrs = mergedPrs.GroupBy(p => p.User.Login);
@@ -154,6 +159,7 @@ namespace Internal.AspNetCore.ReportGenerator.Reports
                 AvatarUrl = user.AvatarUrl,
                 DisplayName = string.IsNullOrEmpty(user.Name) ? user.Login : $"{user.Name} ({user.Login})",
                 ProfileUrl = user.HtmlUrl,
+                Login = user.Login,
                 PullRequests = prs.Select(i => CreatePrSummary(i)).ToList(),
             };
         }
@@ -176,37 +182,47 @@ namespace Internal.AspNetCore.ReportGenerator.Reports
             };
         }
 
-        private static async Task CollectByAuthor(Data.DataStore data, GitHubClient github, GitHubCache cache, Data.Team team, DateRange range, RepositoryCollection repos, HashSet<Issue> mergedPrs)
+        private static async Task CollectByAuthor(Data.DataStore data, GitHubClient github, GitHubCache cache, Data.Team team, DateRange range, RepositoryCollection repos, HashSet<Issue> mergedPrs, ILogger logger)
         {
             var teamMembers = await cache.GetTeamMembersAsync(team.GitHubTeam);
             foreach (var user in teamMembers)
             {
-                var request = new SearchIssuesRequest()
+                var query = new SearchIssuesRequest()
                 {
                     Is = new[] { IssueIsQualifier.PullRequest, IssueIsQualifier.Merged },
                     Author = user,
                     Merged = range,
                     Repos = repos,
                 };
-                var results = await github.Search.SearchIssues(request);
+                var results = await ExecuteGitHubQueryAsync(github, query, logger);
                 mergedPrs.UnionWith(results.Items);
             }
         }
 
-        private static async Task CollectByAreas(GitHubClient github, Data.Team team, DateRange range, RepositoryCollection repos, HashSet<Issue> mergedPrs)
+        private static async Task CollectByAreas(GitHubClient github, Data.Team team, DateRange range, RepositoryCollection repos, HashSet<Issue> mergedPrs, ILogger logger)
         {
             foreach (var area in team.AreaLabels)
             {
-                var request = new SearchIssuesRequest()
+                var query = new SearchIssuesRequest()
                 {
                     Is = new[] { IssueIsQualifier.PullRequest, IssueIsQualifier.Merged },
                     Labels = new[] { area },
                     Merged = range,
                     Repos = repos,
                 };
-                var results = await github.Search.SearchIssues(request);
+                var results = await ExecuteGitHubQueryAsync(github, query, logger);
                 mergedPrs.UnionWith(results.Items);
             }
+        }
+
+        private static async Task<SearchIssuesResult> ExecuteGitHubQueryAsync(GitHubClient github, SearchIssuesRequest query, ILogger logger)
+        {
+            var queryText = string.Join(" ", query.MergedQualifiers());
+            logger.LogInformation("Executing GitHub query: {Query}", queryText);
+            var results = await github.Search.SearchIssues(query);
+            var apiInfo = github.GetLastApiInfo();
+            logger.LogInformation("Received {Count} results. Rate Limit Remaining {Remaining} (Resets At: {ResetAt})", results.TotalCount, apiInfo.RateLimit.Remaining, apiInfo.RateLimit.Reset.LocalDateTime);
+            return results;
         }
     }
 }
