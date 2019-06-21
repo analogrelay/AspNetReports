@@ -53,7 +53,7 @@ namespace Internal.AspNetCore.ReportGenerator.Commands
 
             // Create area breakdowns
             var areas = new Dictionary<string, AreaBurndown>();
-            foreach(var issue in results.Items)
+            foreach(var issue in results)
             {
                 foreach(var label in issue.Labels)
                 {

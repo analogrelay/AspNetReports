@@ -147,7 +147,7 @@ namespace Internal.AspNetCore.ReportGenerator.Reports
                 var open = 0;
                 var closed = 0;
                 var accepted = 0;
-                foreach (var result in results.Items)
+                foreach (var result in results)
                 {
                     if (result.State == ItemState.Open)
                     {
@@ -251,7 +251,7 @@ namespace Internal.AspNetCore.ReportGenerator.Reports
                     Repos = repos,
                 };
                 var results = await github.SearchIssuesLogged(query, logger);
-                mergedPrs.UnionWith(results.Items);
+                mergedPrs.UnionWith(results);
             }
         }
 
@@ -267,7 +267,7 @@ namespace Internal.AspNetCore.ReportGenerator.Reports
                     Repos = repos,
                 };
                 var results = await github.SearchIssuesLogged(query, logger);
-                mergedPrs.UnionWith(results.Items);
+                mergedPrs.UnionWith(results);
             }
         }
     }

@@ -23,6 +23,113 @@
           "accepted": 1
         }
       ]
+    },
+    {
+      "endDate": "2019-06-21T09:25:20.0451307-07:00",
+      "areas": [
+        {
+          "label": "area-blazor",
+          "open": 17,
+          "closed": 38,
+          "accepted": 0
+        },
+        {
+          "label": "area-caching",
+          "open": 1,
+          "closed": 0,
+          "accepted": 0
+        },
+        {
+          "label": "area-commandlinetools",
+          "open": 0,
+          "closed": 1,
+          "accepted": 0
+        },
+        {
+          "label": "area-config",
+          "open": 0,
+          "closed": 1,
+          "accepted": 0
+        },
+        {
+          "label": "area-dataprotection",
+          "open": 2,
+          "closed": 2,
+          "accepted": 0
+        },
+        {
+          "label": "area-grpc",
+          "open": 2,
+          "closed": 0,
+          "accepted": 0
+        },
+        {
+          "label": "area-hosting",
+          "open": 1,
+          "closed": 3,
+          "accepted": 1
+        },
+        {
+          "label": "area-identity",
+          "open": 4,
+          "closed": 7,
+          "accepted": 0
+        },
+        {
+          "label": "area-infrastructure",
+          "open": 10,
+          "closed": 0,
+          "accepted": 0
+        },
+        {
+          "label": "area-logging",
+          "open": 0,
+          "closed": 3,
+          "accepted": 0
+        },
+        {
+          "label": "area-middleware",
+          "open": 0,
+          "closed": 1,
+          "accepted": 0
+        },
+        {
+          "label": "area-mvc",
+          "open": 15,
+          "closed": 23,
+          "accepted": 0
+        },
+        {
+          "label": "area-options",
+          "open": 0,
+          "closed": 2,
+          "accepted": 0
+        },
+        {
+          "label": "area-platform",
+          "open": 4,
+          "closed": 5,
+          "accepted": 0
+        },
+        {
+          "label": "area-security",
+          "open": 3,
+          "closed": 7,
+          "accepted": 0
+        },
+        {
+          "label": "area-servers",
+          "open": 7,
+          "closed": 18,
+          "accepted": 0
+        },
+        {
+          "label": "area-signalr",
+          "open": 5,
+          "closed": 15,
+          "accepted": 1
+        }
+      ]
     }
   ]
 }

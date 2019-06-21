@@ -34,9 +34,24 @@
 
         <h2 class="pt-2">Overview</h2>
 
-        <p>
-            To be supplied
-        </p>
+        <p>This week we took a big chunk of preview 7 work!</p>
+        <p>Community Contributions this week:</p>
+        <ul>
+        <li>Ben Adams and Günther Foidl continued their quest for better performance across the stack.</li>
+        <li>Tom Deseyn from RedHat contributed systemd support for the Generic Host, to match our existing Windows Services support.</li>
+        <li>We received a number of contributions from <a href="https://github.com/Kahbazi">Kahbazi</a> and <a href="https://github.com/wu-yafeng">wu-yafeng</a> to clean up some things that didn't align with docs, or framework guidelines.</li>
+        </ul>
+        <p>Just <em>some</em> of the work our team has been doing:</p>
+        <ul>
+        <li>We updated the SignalR client to cross-target <code>netstandard2.0</code> and <code>netstandard2.1</code> and continuing</li>
+        <li>We finally knocked down a pesky race condition in Kestrel's implementation of the response body pipe.</li>
+        <li>We taught the SignalR JavaScript and Java clients to support changing the URL, while disconnected, without having to reinitialize the whole connection. (.NET client work is blocked on some planned client-side refactoring)</li>
+        <li>We added guaranteed ordering to the SignalR JavaScript client (other clients already had this behavior) so that even if you don't <code>await</code> the <code>.send</code> call, messages won't be reordered.</li>
+        <li>We added benchmarks for the Request Queuing middleware and started exploring alternate queuing strategies.</li>
+        <li>We updated the <code>dev-certs</code> tool to support "upgrading" older certificates to the new parameters added earlier in 3.0.</li>
+        <li>We're working on documenting how to enable Kerberos auth on Linux.</li>
+        <li>We added more documentation on <code>IAsyncEnumerable</code> in SignalR</li>
+        </ul>
 
         <h2 class="pt-2">Important Dates</h2>
         <table class="table">
