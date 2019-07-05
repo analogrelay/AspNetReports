@@ -1,0 +1,638 @@
+{
+  "name": "KCore",
+  "reportDate": "2019-07-05",
+  "milestone": [
+    {
+      "name": "3.0.0-preview7",
+      "branchCloses": "2019-07-01",
+      "workDaysRemaining": 0
+    }
+  ],
+  "externalContributors": [
+    {
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/6076697?v=4",
+      "displayName": "Nick Darvey (NickDarvey)",
+      "profileUrl": "https://github.com/NickDarvey",
+      "login": "NickDarvey",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11496,
+          "title": "Fixes dispatching of derived type arguments to hub methods",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11496"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1142958?v=4",
+      "displayName": "Ben Adams (benaadams)",
+      "profileUrl": "https://github.com/benaadams",
+      "login": "benaadams",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11052,
+          "title": "Pass ReadOnlySequence<byte> via in",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11052"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/588253?v=4",
+      "displayName": "Aristarkh Zagorodnikov (onyxmaster)",
+      "profileUrl": "https://github.com/onyxmaster",
+      "login": "onyxmaster",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "Extensions",
+          "number": 1906,
+          "title": "Improve systemd detection for pre-232 systemd",
+          "url": "https://github.com/aspnet/Extensions/pull/1906"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/4618744?v=4",
+      "displayName": "huysentruitw (huysentruitw)",
+      "profileUrl": "https://github.com/huysentruitw",
+      "login": "huysentruitw",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 10396,
+          "title": "Expose TestServer as public property on RequestBuilder",
+          "url": "https://github.com/aspnet/AspNetCore/pull/10396"
+        }
+      ]
+    }
+  ],
+  "internalContributors": [
+    {
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/7574801?v=4",
+      "displayName": "Brennan (BrennanConroy)",
+      "profileUrl": "https://github.com/BrennanConroy",
+      "login": "BrennanConroy",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11770,
+          "title": "Fix broken npm dependency",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11770"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11732,
+          "title": "Improved for loop for faster negotiate response",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11732"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11683,
+          "title": "Add xml comments to HubInvocationContext",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11683"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11625,
+          "title": "Use writer/serializer json interop in SignalR",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11625"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11450,
+          "title": "Fix SignalR Npm flakiness",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11450"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11070,
+          "title": "[SignalR] Pass a resource into IPolicyEvaluator for Hub method auth",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11070"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "Extensions",
+          "number": 1901,
+          "title": "Minor cleanup",
+          "url": "https://github.com/aspnet/Extensions/pull/1901"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "Extensions",
+          "number": 1898,
+          "title": "Update corefx dependencies",
+          "url": "https://github.com/aspnet/Extensions/pull/1898"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/4809660?v=4",
+      "displayName": "Mikael Mengistu (mikaelm12)",
+      "profileUrl": "https://github.com/mikaelm12",
+      "login": "mikaelm12",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11576,
+          "title": "Rename @aspnet/signalr to @microsoft/signalr",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11576"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11430,
+          "title": "Update Kestrel's dev cert error message",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11430"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11423,
+          "title": "Kestrel Override Client Cert Validation",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11423"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/54385?v=4",
+      "displayName": "Stephen Halter (halter73)",
+      "profileUrl": "https://github.com/halter73",
+      "login": "halter73",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11484,
+          "title": "Adopt Bedrock client abstractions in SignalR client",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11484"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11825,
+          "title": "Don't double-flush HTTP/1 Content-Length responses",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11825"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11702,
+          "title": "Make HttpConnectionFactory public",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11702"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11696,
+          "title": "Mark flaky AddressRegistrationTests with the FlakyAttribute",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11696"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11675,
+          "title": "Don't throw Exceptions from PipeWriter APIs after RST_STREAM",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11675"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11624,
+          "title": "Remove Debug.Assert from Http2OutputProducer",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11624"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11165,
+          "title": "Work around potential race in PipeWriter (IIS Edition)",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11165"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1821173?v=4",
+      "displayName": "Chris Ross (Tratcher)",
+      "profileUrl": "https://github.com/Tratcher",
+      "login": "Tratcher",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11769,
+          "title": "Experiment with flaky tests Internal/2729",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11769"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11655,
+          "title": "Make CertificateLoader public",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11655"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11628,
+          "title": "Deal with blocking HttpSys tests",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11628"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11622,
+          "title": "Remove flaky HttpSys test Server_MultipleOutstandingSyncRequests_Success",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11622"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11611,
+          "title": "Convert TestServer to pipes",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11611"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11429,
+          "title": "Remove or make public pubternals for Http",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11429"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11390,
+          "title": "Avoid calling AuthenticateAsync for IIS out-of-proc",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11390"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11812,
+          "title": "TestServer Reset support, fix up Abort",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11812"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11575,
+          "title": "Add GenericWebHostService after user code",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11575"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11505,
+          "title": "Remove Hosting.Internal APIs",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11505"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11858,
+          "title": "Ignore RequestAborted on Session commit",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11858"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11658,
+          "title": " Unskip work template test",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11658"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11656,
+          "title": "Add workaround to template readme",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11656"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11426,
+          "title": "Remove redundant call to UseAuthentication",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11426"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11421,
+          "title": "Consolidate Windows Auth config",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11421"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/2030323?v=4",
+      "displayName": "John Luo (JunTaoLuo)",
+      "profileUrl": "https://github.com/JunTaoLuo",
+      "login": "JunTaoLuo",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11758,
+          "title": "Marking flaky tests",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11758"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/95136?v=4",
+      "displayName": "David Fowler (davidfowl)",
+      "profileUrl": "https://github.com/davidfowl",
+      "login": "davidfowl",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11680,
+          "title": "Move connection id creation into the transport.",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11680"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11601,
+          "title": "Revert the output pipe in the DuplexStreamPipeAdapter",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11601"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11546,
+          "title": "Use a mutex to guard cert creation on windows",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11546"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11539,
+          "title": "Remove HttpUtlities from the public API surface",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11539"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11508,
+          "title": "Moved things around",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11508"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11488,
+          "title": "Simplified HttpConnection",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11488"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11487,
+          "title": "Added some doc comments to bedrock APIs",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11487"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11474,
+          "title": "PR feedback from #11412",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11474"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/8302101?v=4",
+      "displayName": "Justin Kotalik (jkotalik)",
+      "profileUrl": "https://github.com/jkotalik",
+      "login": "jkotalik",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11661,
+          "title": "Moving slns to better places",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11661"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11066,
+          "title": "Fix Complete in Message Bodies",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11066"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11615,
+          "title": "Actually use correct versions in vs packages",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11615"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11582,
+          "title": "Fix runtime targeting pack to contain full paths to dlls",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11582"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11565,
+          "title": "Make site extension not use SemVer 2.0",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11565"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11538,
+          "title": "Make Middleware internal and remove internal namespaces",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11538"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11345,
+          "title": "Generate .nupkg files that contain aspnetcore-runtime MSI for insertion into Visual Studio",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11345"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/14987221?v=4",
+      "displayName": "Ryan Brandenburg (ryanbrandenburg)",
+      "profileUrl": "https://github.com/ryanbrandenburg",
+      "login": "ryanbrandenburg",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11697,
+          "title": "More doc comment additions",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11697"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/7574?v=4",
+      "displayName": "Andrew Stanton-Nurse (anurse)",
+      "profileUrl": "https://github.com/anurse",
+      "login": "anurse",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "Extensions",
+          "number": 1871,
+          "title": "fix #1723 by converting sql cache to new sqlclient",
+          "url": "https://github.com/aspnet/Extensions/pull/1871"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/13950346?v=4",
+      "displayName": "Dylan Dmitri Gray (DylanDmitri)",
+      "profileUrl": "https://github.com/DylanDmitri",
+      "login": "DylanDmitri",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11695,
+          "title": "RequestQueue namespace cleanup",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11695"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11516,
+          "title": "Dylan/event source",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11516"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11293,
+          "title": "Dylan/stack policy",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11293"
+        }
+      ]
+    }
+  ],
+  "areas": [
+    {
+      "label": "area-signalr",
+      "open": 0,
+      "closed": 5,
+      "incomplete": 5,
+      "accepted": 17
+    },
+    {
+      "label": "area-servers",
+      "open": 0,
+      "closed": 17,
+      "incomplete": 17,
+      "accepted": 8
+    },
+    {
+      "label": "area-hosting",
+      "open": 0,
+      "closed": 4,
+      "incomplete": 4,
+      "accepted": 4
+    }
+  ],
+  "totalOpen": 0,
+  "totalClosed": 26,
+  "totalIncomplete": 26,
+  "totalAccepted": 29,
+  "burndown": {
+    "areas": [
+      "area-hosting",
+      "area-servers",
+      "area-signalr"
+    ],
+    "weeks": [
+      {
+        "date": "2019-06-14",
+        "areas": [
+          {
+            "label": "area-hosting",
+            "open": 1,
+            "closed": 3,
+            "accepted": 1
+          },
+          {
+            "label": "area-servers",
+            "open": 11,
+            "closed": 14,
+            "accepted": 0
+          },
+          {
+            "label": "area-signalr",
+            "open": 7,
+            "closed": 13,
+            "accepted": 1
+          }
+        ]
+      },
+      {
+        "date": "2019-06-21",
+        "areas": [
+          {
+            "label": "area-hosting",
+            "open": 1,
+            "closed": 3,
+            "accepted": 1
+          },
+          {
+            "label": "area-servers",
+            "open": 7,
+            "closed": 18,
+            "accepted": 0
+          },
+          {
+            "label": "area-signalr",
+            "open": 5,
+            "closed": 15,
+            "accepted": 1
+          }
+        ]
+      },
+      {
+        "date": "2019-07-05",
+        "areas": [
+          {
+            "label": "area-hosting",
+            "open": 0,
+            "closed": 4,
+            "accepted": 4
+          },
+          {
+            "label": "area-servers",
+            "open": 0,
+            "closed": 17,
+            "accepted": 8
+          },
+          {
+            "label": "area-signalr",
+            "open": 0,
+            "closed": 5,
+            "accepted": 17
+          }
+        ]
+      }
+    ]
+  }
+}

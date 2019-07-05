@@ -62,7 +62,7 @@ namespace Internal.AspNetCore.ReportGenerator.Data
             var releases = await LoadListAsync<Release>(directory, "releases.json");
             var org = await LoadObjectAsync<Organization>(directory, "org.json", () => new Organization());
 
-            return new DataStore(directory, holidays, teams.ToDictionary(i => i.Name), releases.ToDictionary(r => r.Name), org);
+            return new DataStore(directory, holidays, teams.ToDictionary(i => i.Name, StringComparer.OrdinalIgnoreCase), releases.ToDictionary(r => r.Name, StringComparer.OrdinalIgnoreCase), org);
         }
 
         public bool IsHoliday(DateTime current, WorkLocation location) => Holidays.Any(h => h.Location == location && h.Date.Date == current.Date);

@@ -1,0 +1,642 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Shared CSS Styles-->
+
+    <style>
+        .small-avatar {
+            width: 20px;
+            height: 20px;
+        }
+
+        .contributor-card {
+            max-width: 15%;
+        }
+    </style>
+    <title>KCore Status Report (2019-07-05)</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/AspNetReports">ASP.NET Core Reports</a>
+    </nav>
+    <div class="container pt-5">
+        <h1>KCore Status Report (2019-07-05)</h1>
+
+        <p>The "KCore" team is the team responsible for the core server and hosting infrastructure in ASP.NET Core, as well as ASP.NET Core SignalR and some Microsoft.Extensions components.</p>
+
+        <h2 class="pt-2">Overview</h2>
+
+            <p>Preview 7 is code-complete! Some additional verification is still underway but we're mostly ready for release.</p>
+            <p>External contributions during these two weeks:</p>
+            <ul>
+            <li><strong><a href="https://github.com/NickDarvey">Nick Darvey</a></strong> <a href="https://github.com/aspnet/AspNetCore/pull/11496">contributed a fix to SignalR to properly support derived-type arguments in Hub methods.</a></li>
+            <li><strong><a href="http://github.com/benaadams">Ben Adams</a></strong> <a href="https://github.com/aspnet/AspNetCore/pull/11052">did the perf. Always doing the perf, he is.</a></li>
+            <li><strong><a href="https://github.com/onyxmaster">Aristarkh Zagorodnikov</a></strong> <a href="https://github.com/aspnet/Extensions/pull/1906">taught our "systemd" support how to detect older versions of systemd.</a></li>
+            <li><strong><a href="https://github.com/huysentruitw">huysentruitw</a></strong> <a href="https://github.com/aspnet/AspNetCore/pull/10396">improved how tests using <code>TestServer</code> can access DI services by getting access to the DI container from the <code>RequestBuilder</code>.</a></li>
+            </ul>
+            <p>The team was hard at work, as always:</p>
+            <ul>
+            <li><a href="https://github.com/aspnet/AspNetCore/pull/11625">We dramatically improved the performance of the SignalR JSON protocol thanks to new APIs in <code>System.Text.Json</code>. A 2x improvement in performance!</a></li>
+            <li><a href="https://github.com/aspnet/AspNetCore/pull/11732">We improved the performance of SignalR's response to the <code>/negotiate</code> request.</a></li>
+            <li><a href="https://github.com/aspnet/AspNetCore/pull/11576">We are changing the package name for the SignalR JavaScript client from <code>@aspnet/signalr</code> to <code>@microsoft/signalr</code>.</a></li>
+            <li><a href="https://github.com/aspnet/AspNetCore/pull/11423">We improved Kestrel's client certificate configuration to better support client-certificate authentication.</a></li>
+            <li><a href="https://github.com/aspnet/AspNetCore/pull/11484">SignalR now uses the new "Bedrock" client abstractions, unifying more of the client and server APIs between Kestrel and SignalR and creating examples on which future .NET-based network apps will be written.</a></li>
+            <li><a href="https://github.com/aspnet/AspNetCore/pull/11825">We fixed a major performance regression in Kestrel.</a></li>
+            <li><a href="https://github.com/aspnet/AspNetCore/pull/11611">We converted <code>TestServer</code> to use <code>System.IO.Pipelines</code> natively.</a></li>
+            <li><a href="https://github.com/aspnet/AspNetCore/pull/11390">We removed a redundant call to <code>AuthenticateAsync</code> in IIS out-of-proc, which also removed problematic side-effects.</a></li>
+            <li><a href="https://github.com/aspnet/AspNetCore/pull/11421">We consolidated configuration of "Windows Auth" across both the native support in HttpSys/IIS and the new cross-platform support in 3.0.</a></li>
+            <li><a href="https://github.com/aspnet/AspNetCore/pull/11601">We fixed a major HTTP/2 race condition in Kestrel which was exposed in recent builds.</a></li>
+            <li><a href="https://github.com/aspnet/AspNetCore/pull/11565">We converted the ASP.NET Core Runtime Site Extension back to use semver v1 to work-around a bug in Azure App Services.</a></li>
+            <li><a href="https://github.com/aspnet/AspNetCore/pull/11066">We suppressed an unhelpful and unnecessary error message caused by users attempting to "complete" the Request body pipe.</a></li>
+            <li><a href="https://github.com/aspnet/AspNetCore/pull/11697">So</a>. <a href="https://github.com/aspnet/AspNetCore/pull/11683">Many</a>. <a href="https://github.com/aspnet/AspNetCore/pull/11487">Doc comments</a>.</li>
+            <li><a href="https://github.com/aspnet/Extensions/pull/1871">We converted the <code>Microsoft.Extensions.Caching.SqlServer</code> component to use the new <code>Microsoft.Data.SqlClient</code> library.</a></li>
+            <li><a href="https://github.com/aspnet/AspNetCore/pull/11516">The Request Queuing middleware now has useful Event Counters and and EventSource.</a></li>
+            <li><a href="https://github.com/aspnet/AspNetCore/pull/11293">The Request Queuing middleware has a pluggable queuing policy as well as a new Last In, First Out policy.</a></li>
+            </ul>
+
+        <h2 class="pt-2">Important Dates</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Milestone</th>
+                    <th scope="col">Branch Closes</th>
+                    <th scope="col">Work Days Remaining</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">3.0.0-preview7</th>
+                    <td>2019-07-01</td>
+                    <td>0</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="pt-2">External Contributors</h2>
+        <p>Thanks to all our external contributors this week!</p>
+
+        <div class="card-deck">
+            <div class="card contributor-card">
+                <img class="card-img-top" src="https://avatars0.githubusercontent.com/u/6076697?v=4" alt="Nick Darvey (NickDarvey)">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        Nick Darvey (NickDarvey)
+                    </h5>
+                </div>
+            </div>
+            <div class="card contributor-card">
+                <img class="card-img-top" src="https://avatars1.githubusercontent.com/u/1142958?v=4" alt="Ben Adams (benaadams)">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        Ben Adams (benaadams)
+                    </h5>
+                </div>
+            </div>
+            <div class="card contributor-card">
+                <img class="card-img-top" src="https://avatars0.githubusercontent.com/u/588253?v=4" alt="Aristarkh Zagorodnikov (onyxmaster)">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        Aristarkh Zagorodnikov (onyxmaster)
+                    </h5>
+                </div>
+            </div>
+            <div class="card contributor-card">
+                <img class="card-img-top" src="https://avatars0.githubusercontent.com/u/4618744?v=4" alt="huysentruitw (huysentruitw)">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        huysentruitw (huysentruitw)
+                    </h5>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="pt-2">PRs Merged</h2>
+
+        <div class="row">
+            <div class="col-4">
+                <div id="pr-list" class="list-group" role="tablist">
+                    <a href="#pr-content-for-NickDarvey" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-NickDarvey" data-toggle="list" role="tab" aria-controls="NickDarvey">
+                        <img class="small-avatar" src="https://avatars0.githubusercontent.com/u/6076697?v=4" /> Nick Darvey (NickDarvey) <span
+                            class="badge badge-primary">External</span>
+                    </a>
+                    <a href="#pr-content-for-benaadams" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-benaadams" data-toggle="list" role="tab" aria-controls="benaadams">
+                        <img class="small-avatar" src="https://avatars1.githubusercontent.com/u/1142958?v=4" /> Ben Adams (benaadams) <span
+                            class="badge badge-primary">External</span>
+                    </a>
+                    <a href="#pr-content-for-onyxmaster" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-onyxmaster" data-toggle="list" role="tab" aria-controls="onyxmaster">
+                        <img class="small-avatar" src="https://avatars0.githubusercontent.com/u/588253?v=4" /> Aristarkh Zagorodnikov (onyxmaster) <span
+                            class="badge badge-primary">External</span>
+                    </a>
+                    <a href="#pr-content-for-huysentruitw" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-huysentruitw" data-toggle="list" role="tab" aria-controls="huysentruitw">
+                        <img class="small-avatar" src="https://avatars0.githubusercontent.com/u/4618744?v=4" /> huysentruitw (huysentruitw) <span
+                            class="badge badge-primary">External</span>
+                    </a>
+                    <a href="#pr-content-for-BrennanConroy" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-BrennanConroy" data-toggle="list" role="tab" aria-controls="BrennanConroy">
+                        <img class="small-avatar" src="https://avatars0.githubusercontent.com/u/7574801?v=4" /> Brennan (BrennanConroy)
+                    </a>
+                    <a href="#pr-content-for-mikaelm12" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-mikaelm12" data-toggle="list" role="tab" aria-controls="mikaelm12">
+                        <img class="small-avatar" src="https://avatars1.githubusercontent.com/u/4809660?v=4" /> Mikael Mengistu (mikaelm12)
+                    </a>
+                    <a href="#pr-content-for-halter73" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-halter73" data-toggle="list" role="tab" aria-controls="halter73">
+                        <img class="small-avatar" src="https://avatars3.githubusercontent.com/u/54385?v=4" /> Stephen Halter (halter73)
+                    </a>
+                    <a href="#pr-content-for-Tratcher" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-Tratcher" data-toggle="list" role="tab" aria-controls="Tratcher">
+                        <img class="small-avatar" src="https://avatars3.githubusercontent.com/u/1821173?v=4" /> Chris Ross (Tratcher)
+                    </a>
+                    <a href="#pr-content-for-JunTaoLuo" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-JunTaoLuo" data-toggle="list" role="tab" aria-controls="JunTaoLuo">
+                        <img class="small-avatar" src="https://avatars1.githubusercontent.com/u/2030323?v=4" /> John Luo (JunTaoLuo)
+                    </a>
+                    <a href="#pr-content-for-davidfowl" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-davidfowl" data-toggle="list" role="tab" aria-controls="davidfowl">
+                        <img class="small-avatar" src="https://avatars3.githubusercontent.com/u/95136?v=4" /> David Fowler (davidfowl)
+                    </a>
+                    <a href="#pr-content-for-jkotalik" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-jkotalik" data-toggle="list" role="tab" aria-controls="jkotalik">
+                        <img class="small-avatar" src="https://avatars0.githubusercontent.com/u/8302101?v=4" /> Justin Kotalik (jkotalik)
+                    </a>
+                    <a href="#pr-content-for-ryanbrandenburg" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-ryanbrandenburg" data-toggle="list" role="tab" aria-controls="ryanbrandenburg">
+                        <img class="small-avatar" src="https://avatars0.githubusercontent.com/u/14987221?v=4" /> Ryan Brandenburg (ryanbrandenburg)
+                    </a>
+                    <a href="#pr-content-for-anurse" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-anurse" data-toggle="list" role="tab" aria-controls="anurse">
+                        <img class="small-avatar" src="https://avatars3.githubusercontent.com/u/7574?v=4" /> Andrew Stanton-Nurse (anurse)
+                    </a>
+                    <a href="#pr-content-for-DylanDmitri" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-DylanDmitri" data-toggle="list" role="tab" aria-controls="DylanDmitri">
+                        <img class="small-avatar" src="https://avatars0.githubusercontent.com/u/13950346?v=4" /> Dylan Dmitri Gray (DylanDmitri)
+                    </a>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="tab-content" id="pr-content">
+                    <div class="tab-pane fade" id="pr-content-for-NickDarvey" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-NickDarvey">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11496" target="_blank"><strong>aspnet/AspNetCore#11496</strong>
+                                    Fixes dispatching of derived type arguments to hub methods</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="pr-content-for-benaadams" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-benaadams">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11052" target="_blank"><strong>aspnet/AspNetCore#11052</strong>
+                                    Pass ReadOnlySequence&lt;byte&gt; via in</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="pr-content-for-onyxmaster" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-onyxmaster">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/Extensions/pull/1906" target="_blank"><strong>aspnet/Extensions#1906</strong>
+                                    Improve systemd detection for pre-232 systemd</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="pr-content-for-huysentruitw" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-huysentruitw">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/10396" target="_blank"><strong>aspnet/AspNetCore#10396</strong>
+                                    Expose TestServer as public property on RequestBuilder</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="pr-content-for-BrennanConroy" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-BrennanConroy">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11770" target="_blank"><strong>aspnet/AspNetCore#11770</strong>
+                                    Fix broken npm dependency</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11732" target="_blank"><strong>aspnet/AspNetCore#11732</strong>
+                                    Improved for loop for faster negotiate response</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11683" target="_blank"><strong>aspnet/AspNetCore#11683</strong>
+                                    Add xml comments to HubInvocationContext</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11625" target="_blank"><strong>aspnet/AspNetCore#11625</strong>
+                                    Use writer/serializer json interop in SignalR</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11450" target="_blank"><strong>aspnet/AspNetCore#11450</strong>
+                                    Fix SignalR Npm flakiness</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11070" target="_blank"><strong>aspnet/AspNetCore#11070</strong>
+                                    [SignalR] Pass a resource into IPolicyEvaluator for Hub method auth</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/Extensions/pull/1901" target="_blank"><strong>aspnet/Extensions#1901</strong>
+                                    Minor cleanup</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/Extensions/pull/1898" target="_blank"><strong>aspnet/Extensions#1898</strong>
+                                    Update corefx dependencies</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="pr-content-for-mikaelm12" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-mikaelm12">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11576" target="_blank"><strong>aspnet/AspNetCore#11576</strong>
+                                    Rename @aspnet/signalr to @microsoft/signalr</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11430" target="_blank"><strong>aspnet/AspNetCore#11430</strong>
+                                    Update Kestrel&#39;s dev cert error message</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11423" target="_blank"><strong>aspnet/AspNetCore#11423</strong>
+                                    Kestrel Override Client Cert Validation</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="pr-content-for-halter73" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-halter73">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11484" target="_blank"><strong>aspnet/AspNetCore#11484</strong>
+                                    Adopt Bedrock client abstractions in SignalR client</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11825" target="_blank"><strong>aspnet/AspNetCore#11825</strong>
+                                    Don&#39;t double-flush HTTP/1 Content-Length responses</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11702" target="_blank"><strong>aspnet/AspNetCore#11702</strong>
+                                    Make HttpConnectionFactory public</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11696" target="_blank"><strong>aspnet/AspNetCore#11696</strong>
+                                    Mark flaky AddressRegistrationTests with the FlakyAttribute</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11675" target="_blank"><strong>aspnet/AspNetCore#11675</strong>
+                                    Don&#39;t throw Exceptions from PipeWriter APIs after RST_STREAM</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11624" target="_blank"><strong>aspnet/AspNetCore#11624</strong>
+                                    Remove Debug.Assert from Http2OutputProducer</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11165" target="_blank"><strong>aspnet/AspNetCore#11165</strong>
+                                    Work around potential race in PipeWriter (IIS Edition)</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="pr-content-for-Tratcher" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-Tratcher">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11769" target="_blank"><strong>aspnet/AspNetCore#11769</strong>
+                                    Experiment with flaky tests Internal/2729</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11655" target="_blank"><strong>aspnet/AspNetCore#11655</strong>
+                                    Make CertificateLoader public</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11628" target="_blank"><strong>aspnet/AspNetCore#11628</strong>
+                                    Deal with blocking HttpSys tests</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11622" target="_blank"><strong>aspnet/AspNetCore#11622</strong>
+                                    Remove flaky HttpSys test Server_MultipleOutstandingSyncRequests_Success</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11611" target="_blank"><strong>aspnet/AspNetCore#11611</strong>
+                                    Convert TestServer to pipes</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11429" target="_blank"><strong>aspnet/AspNetCore#11429</strong>
+                                    Remove or make public pubternals for Http</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11390" target="_blank"><strong>aspnet/AspNetCore#11390</strong>
+                                    Avoid calling AuthenticateAsync for IIS out-of-proc</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11812" target="_blank"><strong>aspnet/AspNetCore#11812</strong>
+                                    TestServer Reset support, fix up Abort</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11575" target="_blank"><strong>aspnet/AspNetCore#11575</strong>
+                                    Add GenericWebHostService after user code</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11505" target="_blank"><strong>aspnet/AspNetCore#11505</strong>
+                                    Remove Hosting.Internal APIs</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11858" target="_blank"><strong>aspnet/AspNetCore#11858</strong>
+                                    Ignore RequestAborted on Session commit</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11658" target="_blank"><strong>aspnet/AspNetCore#11658</strong>
+                                     Unskip work template test</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11656" target="_blank"><strong>aspnet/AspNetCore#11656</strong>
+                                    Add workaround to template readme</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11426" target="_blank"><strong>aspnet/AspNetCore#11426</strong>
+                                    Remove redundant call to UseAuthentication</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11421" target="_blank"><strong>aspnet/AspNetCore#11421</strong>
+                                    Consolidate Windows Auth config</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="pr-content-for-JunTaoLuo" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-JunTaoLuo">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11758" target="_blank"><strong>aspnet/AspNetCore#11758</strong>
+                                    Marking flaky tests</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="pr-content-for-davidfowl" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-davidfowl">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11680" target="_blank"><strong>aspnet/AspNetCore#11680</strong>
+                                    Move connection id creation into the transport.</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11601" target="_blank"><strong>aspnet/AspNetCore#11601</strong>
+                                    Revert the output pipe in the DuplexStreamPipeAdapter</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11546" target="_blank"><strong>aspnet/AspNetCore#11546</strong>
+                                    Use a mutex to guard cert creation on windows</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11539" target="_blank"><strong>aspnet/AspNetCore#11539</strong>
+                                    Remove HttpUtlities from the public API surface</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11508" target="_blank"><strong>aspnet/AspNetCore#11508</strong>
+                                    Moved things around</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11488" target="_blank"><strong>aspnet/AspNetCore#11488</strong>
+                                    Simplified HttpConnection</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11487" target="_blank"><strong>aspnet/AspNetCore#11487</strong>
+                                    Added some doc comments to bedrock APIs</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11474" target="_blank"><strong>aspnet/AspNetCore#11474</strong>
+                                    PR feedback from #11412</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="pr-content-for-jkotalik" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-jkotalik">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11661" target="_blank"><strong>aspnet/AspNetCore#11661</strong>
+                                    Moving slns to better places</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11066" target="_blank"><strong>aspnet/AspNetCore#11066</strong>
+                                    Fix Complete in Message Bodies</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11615" target="_blank"><strong>aspnet/AspNetCore#11615</strong>
+                                    Actually use correct versions in vs packages</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11582" target="_blank"><strong>aspnet/AspNetCore#11582</strong>
+                                    Fix runtime targeting pack to contain full paths to dlls</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11565" target="_blank"><strong>aspnet/AspNetCore#11565</strong>
+                                    Make site extension not use SemVer 2.0</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11538" target="_blank"><strong>aspnet/AspNetCore#11538</strong>
+                                    Make Middleware internal and remove internal namespaces</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11345" target="_blank"><strong>aspnet/AspNetCore#11345</strong>
+                                    Generate .nupkg files that contain aspnetcore-runtime MSI for insertion into Visual Studio</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="pr-content-for-ryanbrandenburg" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-ryanbrandenburg">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11697" target="_blank"><strong>aspnet/AspNetCore#11697</strong>
+                                    More doc comment additions</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="pr-content-for-anurse" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-anurse">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/Extensions/pull/1871" target="_blank"><strong>aspnet/Extensions#1871</strong>
+                                    fix #1723 by converting sql cache to new sqlclient</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="pr-content-for-DylanDmitri" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-DylanDmitri">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11695" target="_blank"><strong>aspnet/AspNetCore#11695</strong>
+                                    RequestQueue namespace cleanup</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11516" target="_blank"><strong>aspnet/AspNetCore#11516</strong>
+                                    Dylan/event source</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11293" target="_blank"><strong>aspnet/AspNetCore#11293</strong>
+                                    Dylan/stack policy</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="pt-2">Active Issues</h3>
+
+        <strong>Closed</strong> refers to issues that are closed but do not have the <code>accepted</code> label
+        applied.
+        <strong>Incomplete</strong> is the total of both <strong>Closed</strong> and <strong>Open</strong>.
+
+        <table class="table">
+            <thead>
+                <th scope="col">Area</th>
+                <th scope="col">Open</th>
+                <th scope="col">Closed</th>
+                <th scope="col">Incomplete</th>
+                <th scope="col">Accepted</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row"><code>area-signalr</code></th>
+                    <td>0</td>
+                    <td>5</td>
+                    <td>5</td>
+                    <td>17</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code>area-servers</code></th>
+                    <td>0</td>
+                    <td>17</td>
+                    <td>17</td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code>area-hosting</code></th>
+                    <td>0</td>
+                    <td>4</td>
+                    <td>4</td>
+                    <td>4</td>
+                </tr>
+                <tr class="table-info">
+                    <th scope="row">Total</th>
+                    <td>0</td>
+                    <td>26</td>
+                    <td>26</td>
+                    <td>29</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="pt-2">Burndown</h3>
+
+        <canvas id="burndown-chart-host"></canvas>
+
+        <table class="table">
+            <thead>
+                <th scope="col">Date</th>
+                <th scope="col">area-hosting</th>
+                <th scope="col">area-servers</th>
+                <th scope="col">area-signalr</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row"><strong>2019-06-14</strong></td>
+                    <td>1</td>
+                    <td>11</td>
+                    <td>7</td>
+                </tr>
+                <tr>
+                    <td scope="row"><strong>2019-06-21</strong></td>
+                    <td>1</td>
+                    <td>7</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td scope="row"><strong>2019-07-05</strong></td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"
+        integrity="sha256-xKeoJ50pzbUGkpQxDYHD7o7hxe0LaOGeguUidbq6vis=" crossorigin="anonymous"></script>
+
+    <script>
+        // Raw Burndown Data
+        window.burndownData = {
+            areas: [
+                "area-hosting",
+                "area-servers",
+                "area-signalr",
+            ],
+            weeks: [
+                {
+                    week: "2019-06-14",
+                    areas: [
+                        { label: "area-hosting", open: 1 },
+                        { label: "area-servers", open: 11 },
+                        { label: "area-signalr", open: 7 },
+                    ],
+                },
+                {
+                    week: "2019-06-21",
+                    areas: [
+                        { label: "area-hosting", open: 1 },
+                        { label: "area-servers", open: 7 },
+                        { label: "area-signalr", open: 5 },
+                    ],
+                },
+                {
+                    week: "2019-07-05",
+                    areas: [
+                        { label: "area-hosting", open: 0 },
+                        { label: "area-servers", open: 0 },
+                        { label: "area-signalr", open: 0 },
+                    ],
+                },
+            ]
+        };
+    </script>
+
+    <script type="text/javascript">
+    var chartColors = [
+        /* blue */ 'rgb(54, 162, 235)',
+        /* yellow */ 'rgb(255, 205, 86)',
+        /* orange */ 'rgb(255, 159, 64)',
+        /* green */ 'rgb(75, 192, 192)',
+        /* purple */ 'rgb(153, 102, 255)',
+        /* red */ 'rgb(255, 99, 132)',
+    ];
+
+    function renderBurndown(host, burndownData) {
+        var lineData = [];
+        var barDataSets = [];
+        var counter = 0;
+        for (var area of burndownData.areas) {
+            var areaData = [];
+            for (var week of burndownData.weeks) {
+                var weekArea = week.areas.find(a => a.label === area);
+                areaData.push(weekArea.open);
+            }
+
+            barDataSets.unshift({
+                label: area,
+                backgroundColor: chartColors[counter % chartColors.length],
+                data: areaData,
+                stack: "Stack 0"
+            });
+            counter += 1;
+        }
+
+        for (var week of burndownData.weeks) {
+            var count = 0;
+            for (var area of week.areas) {
+                count += area.open
+            }
+            lineData.push(count);
+        }
+
+        var labels = burndownData.weeks.map(w => w.week);
+
+        var chart = new Chart(host, {
+            type: "bar",
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: "All Issues",
+                        data: lineData,
+                        borderColor: 'rgb(201, 203, 207)',
+                        backgroundColor: 'rgba(255, 255, 255, 0)',
+                        type: 'line'
+                    },
+                    ...barDataSets
+                ]
+            }
+        });
+    }
+
+    // Expect the data to be present in window.burndownData
+    if (typeof window.burndownData !== "object") {
+        console.error("Missing burndown data!");
+    } else {
+        var host = document.getElementById("burndown-chart-host");
+        if (!host) {
+            console.error("Missing burndown chart host!");
+        }
+        else {
+            renderBurndown(host, window.burndownData);
+        }
+    }
+    </script></body>
+
+</html>
