@@ -8,10 +8,14 @@
                 "branchCloses": "2019-07-01"
             },
             {
-                "name": "3.0.0-preview8"
+                "name": "3.0.0-preview8",
+                "branchOpens": "2019-07-01",
+                "branchCloses": "2019-07-29"
             },
             {
-                "name": "3.0.0-preview9"
+                "name": "3.0.0-preview9",
+                "branchOpens": "2019-07-29",
+                "branchCloses": "2019-08-21"
             },
             {
                 "name": "3.0.0"

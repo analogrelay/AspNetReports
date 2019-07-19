@@ -1,0 +1,644 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Shared CSS Styles-->
+
+    <style>
+        .small-avatar {
+            width: 20px;
+            height: 20px;
+        }
+
+        .contributor-card {
+            max-width: 15%;
+        }
+    </style>
+    <title>KCore Status Report (2019-07-19)</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/AspNetReports">ASP.NET Core Reports</a>
+    </nav>
+    <div class="container pt-5">
+        <h1>KCore Status Report (2019-07-19)</h1>
+
+        <p>The "KCore" team is the team responsible for the core server and hosting infrastructure in ASP.NET Core, as
+            well as ASP.NET Core SignalR and some Microsoft.Extensions components.</p>
+
+        <h2 class="pt-2">Overview</h2>
+        <p>We are deep in to Preview 8 work, wrapping up the last few things for 3.0. Stress is the name of the game,
+            but
+            hopefully just stressing the product and not the engineers ;). We're diving in to the reliability of
+            Kestrel's
+            HTTP/2 stack under heavy load thanks to some tools we're sharing with the CoreFX team. Other areas of the
+            stack
+            are seeing some final API tweaks to get things ready for 3.0. Of course, we're continuing to knock down the
+            last
+            few bugs as well.</p>
+        <p>External Contributions this week:</p>
+        <ul>
+            <li><a href="https://github.com/staff0rd"><strong>Stafford Williams</strong></a> <a
+                    href="https://github.com/aspnet/AspNetCore/pull/12274">tidied up one of our SignalR benchmarking
+                    tools.</a></li>
+            <li><a href="https://github.com/tebeco"><strong>TeBeCo</strong></a> <a
+                    href="https://github.com/aspnet/AspNetCore/pull/12165">fixed a synchronous I/O usage in one of our
+                    SignalR samples.</a></li>
+            <li><a href="https://github.com/cjaliaga"><strong>Carlos J. Aliaga</strong></a> <a
+                    href="https://github.com/aspnet/AspNetCore/pull/12157">fixed an invalid cast when working with
+                    custom
+                    header values.</a></li>
+            <li><a href="https://github.com/benaadams"><strong>Ben Adams</strong></a> <a
+                    href="https://github.com/aspnet/AspNetCore/pull/11782">made more methods inlinable by wrapping
+                    'throw's
+                    in methods.</a></li>
+            <li><a href="https://github.com/danielDevelops"><strong>Daniel Martin</strong></a> <a
+                    href="https://github.com/aspnet/AspNetCore/pull/10209">added some useful new events for JWT Bearer
+                    Authentication.</a></li>
+        </ul>
+        <p>The team continues to work on getting a quality product ready for release:</p>
+        <ul>
+            <li><a href="https://github.com/aspnet/Extensions/pull/2053">We added some logging to help users avoid a
+                    hang
+                    when <code>IHost</code> isn't disposed.</a>
+                <ul>
+                    <li>Thanks to <a href="https://github.com/maryamariyan">Maryam</a> on the CoreFX team for her help
+                        here!
+                    </li>
+                </ul>
+            </li>
+            <li><a href="https://github.com/aspnet/AspNetCore/pull/12212">We fixed a small memory leak in the SignalR
+                    Java
+                    Client.</a></li>
+            <li><a href="https://github.com/aspnet/AspNetCore/pull/12078">We fixed a race in the SignalR Java
+                    Client.</a>
+            </li>
+            <li><a href="https://github.com/aspnet/AspNetCore/pull/12282">We got the SignalR Endpoint Routing APIs
+                    aligned
+                    with other Endpoint Routing APIs.</a></li>
+            <li><a href="https://github.com/aspnet/SignalR-Client-Cpp/pull/7">We removed the use of the C++ Concurrency
+                    Runtime (PPL) in our prototype SignalR C++ client.</a></li>
+            <li><a href="https://github.com/aspnet/AspNetCore/pull/12127">The concurrency limit middleware, coming after
+                    3.0, got some polish.</a>
+                <ul>
+                    <li><a href="https://github.com/DylanDmitri">Dylan</a>, our intern, is getting close to finishing
+                        his
+                        internship, he finishes on August 2nd!</li>
+                    <li>Check him out on Twitter: <a href="https://twitter.com/DylanDmitriGray"
+                            rel="nofollow">@DylanDmitriGray</a>.</li>
+                </ul>
+            </li>
+            <li>Lots of Kestrel perf stuff: <a href="https://github.com/aspnet/AspNetCore/pull/12265">#12265</a>, <a
+                    href="https://github.com/aspnet/AspNetCore/pull/12225">#12225</a>, <a
+                    href="https://github.com/aspnet/AspNetCore/pull/12285">#12285</a>.</li>
+            <li><a href="https://github.com/aspnet/AspNetCore/pull/12262">We quieted down a noisy client-triggered log
+                    message. This was a long-standing customer request!</a></li>
+            <li>Lots of work on Kestrel stress-resiliance: <a
+                    href="https://github.com/aspnet/AspNetCore/pull/12081">#12081</a>, <a
+                    href="https://github.com/aspnet/AspNetCore/pull/12204">#12204</a>, <a
+                    href="https://github.com/aspnet/AspNetCore/pull/12131">#12131</a>,</li>
+            <li><a href="https://github.com/aspnet/AspNetCore/pull/11616">We started building our own packages for VS
+                    insertion of ASP.NET Core components in 2.1/2.2.</a></li>
+            <li><a href="https://github.com/aspnet/AspNetCore/pull/12200">We updated to the latest version of
+                    Microsoft.IdentityModel and friends.</a></li>
+        </ul>
+
+        <h2 class="pt-2">Important Dates</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Milestone</th>
+                    <th scope="col">Branch Closes</th>
+                    <th scope="col">Work Days Remaining</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">3.0.0-preview8</th>
+                    <td>2019-07-29</td>
+                    <td>7</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="pt-2">External Contributors</h2>
+        <p>Thanks to all our external contributors this week!</p>
+
+        <div class="card-deck">
+            <div class="card contributor-card">
+                <img class="card-img-top" src="https://avatars0.githubusercontent.com/u/6289998?v=4"
+                    alt="Stafford Williams (staff0rd)">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        Stafford Williams (staff0rd)
+                    </h5>
+                </div>
+            </div>
+            <div class="card contributor-card">
+                <img class="card-img-top" src="https://avatars0.githubusercontent.com/u/2266487?v=4"
+                    alt="TeBeCo (tebeco)">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        TeBeCo (tebeco)
+                    </h5>
+                </div>
+            </div>
+            <div class="card contributor-card">
+                <img class="card-img-top" src="https://avatars1.githubusercontent.com/u/1939768?v=4"
+                    alt="Carlos J. Aliaga (cjaliaga)">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        Carlos J. Aliaga (cjaliaga)
+                    </h5>
+                </div>
+            </div>
+            <div class="card contributor-card">
+                <img class="card-img-top" src="https://avatars1.githubusercontent.com/u/1142958?v=4"
+                    alt="Ben Adams (benaadams)">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        Ben Adams (benaadams)
+                    </h5>
+                </div>
+            </div>
+            <div class="card contributor-card">
+                <img class="card-img-top" src="https://avatars3.githubusercontent.com/u/19505491?v=4"
+                    alt="Daniel Martin (danielDevelops)">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        Daniel Martin (danielDevelops)
+                    </h5>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="pt-2">PRs Merged</h2>
+
+        <div class="row">
+            <div class="col-4">
+                <div id="pr-list" class="list-group" role="tablist">
+                    <a href="#pr-content-for-staff0rd" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-staff0rd" data-toggle="list" role="tab" aria-controls="staff0rd">
+                        <img class="small-avatar" src="https://avatars0.githubusercontent.com/u/6289998?v=4" /> Stafford
+                        Williams (staff0rd) <span class="badge badge-primary">External</span>
+                    </a>
+                    <a href="#pr-content-for-tebeco" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-tebeco" data-toggle="list" role="tab" aria-controls="tebeco">
+                        <img class="small-avatar" src="https://avatars0.githubusercontent.com/u/2266487?v=4" /> TeBeCo
+                        (tebeco) <span class="badge badge-primary">External</span>
+                    </a>
+                    <a href="#pr-content-for-cjaliaga" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-cjaliaga" data-toggle="list" role="tab" aria-controls="cjaliaga">
+                        <img class="small-avatar" src="https://avatars1.githubusercontent.com/u/1939768?v=4" /> Carlos
+                        J. Aliaga (cjaliaga) <span class="badge badge-primary">External</span>
+                    </a>
+                    <a href="#pr-content-for-benaadams" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-benaadams" data-toggle="list" role="tab" aria-controls="benaadams">
+                        <img class="small-avatar" src="https://avatars1.githubusercontent.com/u/1142958?v=4" /> Ben
+                        Adams (benaadams) <span class="badge badge-primary">External</span>
+                    </a>
+                    <a href="#pr-content-for-danielDevelops" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-danielDevelops" data-toggle="list" role="tab"
+                        aria-controls="danielDevelops">
+                        <img class="small-avatar" src="https://avatars3.githubusercontent.com/u/19505491?v=4" /> Daniel
+                        Martin (danielDevelops) <span class="badge badge-primary">External</span>
+                    </a>
+                    <a href="#pr-content-for-maryamariyan" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-maryamariyan" data-toggle="list" role="tab" aria-controls="maryamariyan">
+                        <img class="small-avatar" src="https://avatars2.githubusercontent.com/u/5897654?v=4" /> Maryam
+                        Ariyan (maryamariyan)
+                    </a>
+                    <a href="#pr-content-for-mikaelm12" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-mikaelm12" data-toggle="list" role="tab" aria-controls="mikaelm12">
+                        <img class="small-avatar" src="https://avatars1.githubusercontent.com/u/4809660?v=4" /> Mikael
+                        Mengistu (mikaelm12)
+                    </a>
+                    <a href="#pr-content-for-BrennanConroy" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-BrennanConroy" data-toggle="list" role="tab" aria-controls="BrennanConroy">
+                        <img class="small-avatar" src="https://avatars0.githubusercontent.com/u/7574801?v=4" /> Brennan
+                        (BrennanConroy)
+                    </a>
+                    <a href="#pr-content-for-DylanDmitri" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-DylanDmitri" data-toggle="list" role="tab" aria-controls="DylanDmitri">
+                        <img class="small-avatar" src="https://avatars0.githubusercontent.com/u/13950346?v=4" /> Dylan
+                        Dmitri Gray (DylanDmitri)
+                    </a>
+                    <a href="#pr-content-for-davidfowl" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-davidfowl" data-toggle="list" role="tab" aria-controls="davidfowl">
+                        <img class="small-avatar" src="https://avatars3.githubusercontent.com/u/95136?v=4" /> David
+                        Fowler (davidfowl)
+                    </a>
+                    <a href="#pr-content-for-halter73" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-halter73" data-toggle="list" role="tab" aria-controls="halter73">
+                        <img class="small-avatar" src="https://avatars3.githubusercontent.com/u/54385?v=4" /> Stephen
+                        Halter (halter73)
+                    </a>
+                    <a href="#pr-content-for-jkotalik" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-jkotalik" data-toggle="list" role="tab" aria-controls="jkotalik">
+                        <img class="small-avatar" src="https://avatars0.githubusercontent.com/u/8302101?v=4" /> Justin
+                        Kotalik (jkotalik)
+                    </a>
+                    <a href="#pr-content-for-Tratcher" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-Tratcher" data-toggle="list" role="tab" aria-controls="Tratcher">
+                        <img class="small-avatar" src="https://avatars3.githubusercontent.com/u/1821173?v=4" /> Chris
+                        Ross (Tratcher)
+                    </a>
+                    <a href="#pr-content-for-rynowak" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-rynowak" data-toggle="list" role="tab" aria-controls="rynowak">
+                        <img class="small-avatar" src="https://avatars1.githubusercontent.com/u/1430011?v=4" /> Ryan
+                        Nowak (rynowak)
+                    </a>
+                    <a href="#pr-content-for-anurse" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-anurse" data-toggle="list" role="tab" aria-controls="anurse">
+                        <img class="small-avatar" src="https://avatars3.githubusercontent.com/u/7574?v=4" /> Andrew
+                        Stanton-Nurse (anurse)
+                    </a>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="tab-content" id="pr-content">
+                    <div class="tab-pane fade" id="pr-content-for-staff0rd" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-staff0rd">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12274"
+                                    target="_blank"><strong>aspnet/AspNetCore#12274</strong>
+                                    Crankier: off by one error</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="pr-content-for-tebeco" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-tebeco">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12165"
+                                    target="_blank"><strong>aspnet/AspNetCore#12165</strong>
+                                    AllowSynchronousIO makes JsonTextWriter throw in SignalR sample</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="pr-content-for-cjaliaga" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-cjaliaga">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12157"
+                                    target="_blank"><strong>aspnet/AspNetCore#12157</strong>
+                                    Fixes RequestHeader to allow working with KeyValuePair</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="pr-content-for-benaadams" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-benaadams">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11782"
+                                    target="_blank"><strong>aspnet/AspNetCore#11782</strong>
+                                    Use non-returning throw methods</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11606"
+                                    target="_blank"><strong>aspnet/AspNetCore#11606</strong>
+                                    Use task.IsCompletedSuccessfully rather than ReferenceEquals</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="pr-content-for-danielDevelops" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-danielDevelops">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/10209"
+                                    target="_blank"><strong>aspnet/AspNetCore#10209</strong>
+                                    Danielmartin/update to jwt bearer event</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="pr-content-for-maryamariyan" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-maryamariyan">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/Extensions/pull/2053"
+                                    target="_blank"><strong>aspnet/Extensions#2053</strong>
+                                    Add logging for the hanging case when calling start/stop</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="pr-content-for-mikaelm12" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-mikaelm12">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12297"
+                                    target="_blank"><strong>aspnet/AspNetCore#12297</strong>
+                                    Rename SignalR Server Transports</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12212"
+                                    target="_blank"><strong>aspnet/AspNetCore#12212</strong>
+                                    Clear internal stream map on connection close.</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12078"
+                                    target="_blank"><strong>aspnet/AspNetCore#12078</strong>
+                                    Acquire HubConnectionStateLock before Send/Invoke/Stream</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12026"
+                                    target="_blank"><strong>aspnet/AspNetCore#12026</strong>
+                                    Updating logging on transport failure</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="pr-content-for-BrennanConroy" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-BrennanConroy">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12282"
+                                    target="_blank"><strong>aspnet/AspNetCore#12282</strong>
+                                    Update SignalR Endpoint pattern usage</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="pr-content-for-DylanDmitri" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-DylanDmitri">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12127"
+                                    target="_blank"><strong>aspnet/AspNetCore#12127</strong>
+                                    ConcurrencyLimiter polishing and cleanup</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12163"
+                                    target="_blank"><strong>aspnet/AspNetCore#12163</strong>
+                                    Dylan/polishing</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="pr-content-for-davidfowl" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-davidfowl">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12265"
+                                    target="_blank"><strong>aspnet/AspNetCore#12265</strong>
+                                    Dispatch connection execution</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12225"
+                                    target="_blank"><strong>aspnet/AspNetCore#12225</strong>
+                                    Avoid double allocating the HttpConnectionContext</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="pr-content-for-halter73" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-halter73">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12262"
+                                    target="_blank"><strong>aspnet/AspNetCore#12262</strong>
+                                    Log client errors as Debug</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12081"
+                                    target="_blank"><strong>aspnet/AspNetCore#12081</strong>
+                                    Wrap the PipeWriter used by Kestrel&#39;s output writing logic</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12261"
+                                    target="_blank"><strong>aspnet/AspNetCore#12261</strong>
+                                    Don&#39;t invoke continuations inline in OnCompleted</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="pr-content-for-jkotalik" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-jkotalik">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12204"
+                                    target="_blank"><strong>aspnet/AspNetCore#12204</strong>
+                                    Revert the input pipe in the DuplexStreamPipeAdapter</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12131"
+                                    target="_blank"><strong>aspnet/AspNetCore#12131</strong>
+                                    Add Http2 Kestrel stress runs </a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12103"
+                                    target="_blank"><strong>aspnet/AspNetCore#12103</strong>
+                                    Copy ANCM into a separate folder to avoid copy races</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12285"
+                                    target="_blank"><strong>aspnet/AspNetCore#12285</strong>
+                                    Use a single lock for writing to ConcurrentPipeWriter</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12123"
+                                    target="_blank"><strong>aspnet/AspNetCore#12123</strong>
+                                    Skip IIS tests that shouldn&#39;t be run</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/11616"
+                                    target="_blank"><strong>aspnet/AspNetCore#11616</strong>
+                                    Generate VS nuget package for 2.1</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="pr-content-for-Tratcher" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-Tratcher">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12248"
+                                    target="_blank"><strong>aspnet/AspNetCore#12248</strong>
+                                    Cleanup ClientCancellationAbortsRequest </a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12200"
+                                    target="_blank"><strong>aspnet/AspNetCore#12200</strong>
+                                    Update IdentityModel to 5.5.0</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12133"
+                                    target="_blank"><strong>aspnet/AspNetCore#12133</strong>
+                                    Danielmartin/update to jwt bearer events</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="pr-content-for-rynowak" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-rynowak">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/9488"
+                                    target="_blank"><strong>aspnet/AspNetCore#9488</strong>
+                                    Refactor of Startup analyzer code</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="pr-content-for-anurse" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-anurse">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/Extensions/pull/2006"
+                                    target="_blank"><strong>aspnet/Extensions#2006</strong>
+                                    update version of SqlClient used by sql cache</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="pt-2">Active Issues</h3>
+
+        <strong>Closed</strong> refers to issues that are closed but do not have the <code>accepted</code> label
+        applied.
+        <strong>Incomplete</strong> is the total of both <strong>Closed</strong> and <strong>Open</strong>.
+
+        <table class="table">
+            <thead>
+                <th scope="col">Area</th>
+                <th scope="col">Open</th>
+                <th scope="col">Closed</th>
+                <th scope="col">Incomplete</th>
+                <th scope="col">Accepted</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row"><code>area-signalr</code></th>
+                    <td>7</td>
+                    <td>9</td>
+                    <td>16</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code>area-servers</code></th>
+                    <td>11</td>
+                    <td>8</td>
+                    <td>19</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code>area-hosting</code></th>
+                    <td>3</td>
+                    <td>1</td>
+                    <td>4</td>
+                    <td>0</td>
+                </tr>
+                <tr class="table-info">
+                    <th scope="row">Total</th>
+                    <td>21</td>
+                    <td>18</td>
+                    <td>39</td>
+                    <td>0</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="pt-2">Burndown</h3>
+
+        <canvas id="burndown-chart-host"></canvas>
+
+        <table class="table">
+            <thead>
+                <th scope="col">Date</th>
+                <th scope="col">area-hosting</th>
+                <th scope="col">area-servers</th>
+                <th scope="col">area-signalr</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row"><strong>2019-07-19</strong></td>
+                    <td>3</td>
+                    <td>11</td>
+                    <td>7</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"
+        integrity="sha256-xKeoJ50pzbUGkpQxDYHD7o7hxe0LaOGeguUidbq6vis=" crossorigin="anonymous"></script>
+
+    <script>
+        // Raw Burndown Data
+        window.burndownData = {
+            areas: [
+                "area-hosting",
+                "area-servers",
+                "area-signalr",
+            ],
+            weeks: [
+                {
+                    week: "2019-07-19",
+                    areas: [
+                        { label: "area-hosting", open: 3 },
+                        { label: "area-servers", open: 11 },
+                        { label: "area-signalr", open: 7 },
+                    ],
+                },
+            ]
+        };
+    </script>
+
+    <script type="text/javascript">
+        var chartColors = [
+        /* blue */ 'rgb(54, 162, 235)',
+        /* yellow */ 'rgb(255, 205, 86)',
+        /* orange */ 'rgb(255, 159, 64)',
+        /* green */ 'rgb(75, 192, 192)',
+        /* purple */ 'rgb(153, 102, 255)',
+        /* red */ 'rgb(255, 99, 132)',
+        ];
+
+        function renderBurndown(host, burndownData) {
+            var lineData = [];
+            var barDataSets = [];
+            var counter = 0;
+            for (var area of burndownData.areas) {
+                var areaData = [];
+                for (var week of burndownData.weeks) {
+                    var weekArea = week.areas.find(a => a.label === area);
+                    areaData.push(weekArea.open);
+                }
+
+                barDataSets.unshift({
+                    label: area,
+                    backgroundColor: chartColors[counter % chartColors.length],
+                    data: areaData,
+                    stack: "Stack 0"
+                });
+                counter += 1;
+            }
+
+            for (var week of burndownData.weeks) {
+                var count = 0;
+                for (var area of week.areas) {
+                    count += area.open
+                }
+                lineData.push(count);
+            }
+
+            var labels = burndownData.weeks.map(w => w.week);
+
+            var chart = new Chart(host, {
+                type: "bar",
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: "All Issues",
+                            data: lineData,
+                            borderColor: 'rgb(201, 203, 207)',
+                            backgroundColor: 'rgba(255, 255, 255, 0)',
+                            type: 'line'
+                        },
+                        ...barDataSets
+                    ]
+                }
+            });
+        }
+
+        // Expect the data to be present in window.burndownData
+        if (typeof window.burndownData !== "object") {
+            console.error("Missing burndown data!");
+        } else {
+            var host = document.getElementById("burndown-chart-host");
+            if (!host) {
+                console.error("Missing burndown chart host!");
+            }
+            else {
+                renderBurndown(host, window.burndownData);
+            }
+        }
+    </script>
+</body>
+
+</html>

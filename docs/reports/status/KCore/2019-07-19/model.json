@@ -1,0 +1,389 @@
+{
+  "name": "KCore",
+  "reportDate": "2019-07-19",
+  "milestone": [
+    {
+      "name": "3.0.0-preview8",
+      "branchCloses": "2019-07-29",
+      "workDaysRemaining": 7
+    }
+  ],
+  "externalContributors": [
+    {
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/6289998?v=4",
+      "displayName": "Stafford Williams (staff0rd)",
+      "profileUrl": "https://github.com/staff0rd",
+      "login": "staff0rd",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12274,
+          "title": "Crankier: off by one error",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12274"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/2266487?v=4",
+      "displayName": "TeBeCo (tebeco)",
+      "profileUrl": "https://github.com/tebeco",
+      "login": "tebeco",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12165,
+          "title": "AllowSynchronousIO makes JsonTextWriter throw in SignalR sample",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12165"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1939768?v=4",
+      "displayName": "Carlos J. Aliaga (cjaliaga)",
+      "profileUrl": "https://github.com/cjaliaga",
+      "login": "cjaliaga",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12157,
+          "title": "Fixes RequestHeader to allow working with KeyValuePair",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12157"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1142958?v=4",
+      "displayName": "Ben Adams (benaadams)",
+      "profileUrl": "https://github.com/benaadams",
+      "login": "benaadams",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11782,
+          "title": "Use non-returning throw methods",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11782"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11606,
+          "title": "Use task.IsCompletedSuccessfully rather than ReferenceEquals",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11606"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars2.githubusercontent.com/u/5897654?v=4",
+      "displayName": "Maryam Ariyan (maryamariyan)",
+      "profileUrl": "https://github.com/maryamariyan",
+      "login": "maryamariyan",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "Extensions",
+          "number": 2053,
+          "title": "Add logging for the hanging case when calling start/stop",
+          "url": "https://github.com/aspnet/Extensions/pull/2053"
+        }
+      ]
+    }
+  ],
+  "internalContributors": [
+    {
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/4809660?v=4",
+      "displayName": "Mikael Mengistu (mikaelm12)",
+      "profileUrl": "https://github.com/mikaelm12",
+      "login": "mikaelm12",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12297,
+          "title": "Rename SignalR Server Transports",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12297"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12212,
+          "title": "Clear internal stream map on connection close.",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12212"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12078,
+          "title": "Acquire HubConnectionStateLock before Send/Invoke/Stream",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12078"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12026,
+          "title": "Updating logging on transport failure",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12026"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/7574801?v=4",
+      "displayName": "Brennan (BrennanConroy)",
+      "profileUrl": "https://github.com/BrennanConroy",
+      "login": "BrennanConroy",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12282,
+          "title": "Update SignalR Endpoint pattern usage",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12282"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/13950346?v=4",
+      "displayName": "Dylan Dmitri Gray (DylanDmitri)",
+      "profileUrl": "https://github.com/DylanDmitri",
+      "login": "DylanDmitri",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12127,
+          "title": "ConcurrencyLimiter polishing and cleanup",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12127"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12163,
+          "title": "Dylan/polishing",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12163"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/95136?v=4",
+      "displayName": "David Fowler (davidfowl)",
+      "profileUrl": "https://github.com/davidfowl",
+      "login": "davidfowl",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12265,
+          "title": "Dispatch connection execution",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12265"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12225,
+          "title": "Avoid double allocating the HttpConnectionContext",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12225"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/54385?v=4",
+      "displayName": "Stephen Halter (halter73)",
+      "profileUrl": "https://github.com/halter73",
+      "login": "halter73",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12262,
+          "title": "Log client errors as Debug",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12262"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12081,
+          "title": "Wrap the PipeWriter used by Kestrel's output writing logic",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12081"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12261,
+          "title": "Don't invoke continuations inline in OnCompleted",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12261"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/8302101?v=4",
+      "displayName": "Justin Kotalik (jkotalik)",
+      "profileUrl": "https://github.com/jkotalik",
+      "login": "jkotalik",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12204,
+          "title": "Revert the input pipe in the DuplexStreamPipeAdapter",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12204"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12131,
+          "title": "Add Http2 Kestrel stress runs ",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12131"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12103,
+          "title": "Copy ANCM into a separate folder to avoid copy races",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12103"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12285,
+          "title": "Use a single lock for writing to ConcurrentPipeWriter",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12285"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12123,
+          "title": "Skip IIS tests that shouldn't be run",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12123"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 11616,
+          "title": "Generate VS nuget package for 2.1",
+          "url": "https://github.com/aspnet/AspNetCore/pull/11616"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/1821173?v=4",
+      "displayName": "Chris Ross (Tratcher)",
+      "profileUrl": "https://github.com/Tratcher",
+      "login": "Tratcher",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12248,
+          "title": "Cleanup ClientCancellationAbortsRequest ",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12248"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12200,
+          "title": "Update IdentityModel to 5.5.0",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12200"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12133,
+          "title": "Danielmartin/update to jwt bearer events",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12133"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/1430011?v=4",
+      "displayName": "Ryan Nowak (rynowak)",
+      "profileUrl": "https://github.com/rynowak",
+      "login": "rynowak",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 9488,
+          "title": "Refactor of Startup analyzer code",
+          "url": "https://github.com/aspnet/AspNetCore/pull/9488"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars3.githubusercontent.com/u/7574?v=4",
+      "displayName": "Andrew Stanton-Nurse (anurse)",
+      "profileUrl": "https://github.com/anurse",
+      "login": "anurse",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "Extensions",
+          "number": 2006,
+          "title": "update version of SqlClient used by sql cache",
+          "url": "https://github.com/aspnet/Extensions/pull/2006"
+        }
+      ]
+    }
+  ],
+  "areas": [
+    {
+      "label": "area-signalr",
+      "open": 7,
+      "closed": 9,
+      "incomplete": 16,
+      "accepted": 0
+    },
+    {
+      "label": "area-servers",
+      "open": 11,
+      "closed": 8,
+      "incomplete": 19,
+      "accepted": 0
+    },
+    {
+      "label": "area-hosting",
+      "open": 3,
+      "closed": 1,
+      "incomplete": 4,
+      "accepted": 0
+    }
+  ],
+  "totalOpen": 21,
+  "totalClosed": 18,
+  "totalIncomplete": 39,
+  "totalAccepted": 0,
+  "burndown": {
+    "areas": [
+      "area-hosting",
+      "area-servers",
+      "area-signalr"
+    ],
+    "weeks": [
+      {
+        "date": "2019-07-19",
+        "areas": [
+          {
+            "label": "area-hosting",
+            "open": 3,
+            "closed": 1,
+            "accepted": 0
+          },
+          {
+            "label": "area-servers",
+            "open": 11,
+            "closed": 8,
+            "accepted": 0
+          },
+          {
+            "label": "area-signalr",
+            "open": 7,
+            "closed": 9,
+            "accepted": 0
+          }
+        ]
+      }
+    ]
+  }
+}
