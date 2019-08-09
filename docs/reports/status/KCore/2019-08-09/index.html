@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Shared CSS Styles-->
+
+    <style>
+        .small-avatar {
+            width: 20px;
+            height: 20px;
+        }
+
+        .contributor-card {
+            max-width: 15%;
+        }
+    </style>
+    <title>KCore Status Report (2019-08-09)</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/AspNetReports">ASP.NET Core Reports</a>
+    </nav>
+    <div class="container pt-5">
+        <h1>KCore Status Report (2019-08-09)</h1>
+
+        <p>The "KCore" team is the team responsible for the core server and hosting infrastructure in ASP.NET Core, as
+            well as ASP.NET Core SignalR and some Microsoft.Extensions components.</p>
+
+        <h2 class="pt-2">Overview</h2>
+
+        <p>Preview 9 is pretty quiet as far as code changes go. We're doing a lot of work on performance and other stuff
+            preparing for the release. We're also starting to dip in to 5.0 planning.</p>
+        <p>No external contributors this week! That's mostly to be expected though as we've been changing gears towards
+            5.0.
+        </p>
+        <p>The team has merged a few small things:</p>
+        <ul>
+            <li>Some test improvements in SignalR, and reduced the noisiness of some client-triggered errors in the log.
+            </li>
+            <li>Test improvements in Servers.</li>
+            <li>Patch work for September.</li>
+            <li>Identified a major regression in ANCM and got a fix done in time for preview 8.</li>
+            <li>Fixed a fairly significant regression in a Kestrel benchmark scenario.</li>
+        </ul>
+
+        <h2 class="pt-2">Important Dates</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Milestone</th>
+                    <th scope="col">Branch Closes</th>
+                    <th scope="col">Work Days Remaining</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">3.0.0-preview9</th>
+                    <td>2019-08-21</td>
+                    <td>9</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="pt-2">External Contributors</h2>
+        <p>Thanks to all our external contributors this week!</p>
+
+        <div class="card-deck">
+        </div>
+
+        <h2 class="pt-2">PRs Merged</h2>
+
+        <div class="row">
+            <div class="col-4">
+                <div id="pr-list" class="list-group" role="tablist">
+                    <a href="#pr-content-for-BrennanConroy" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-BrennanConroy" data-toggle="list" role="tab" aria-controls="BrennanConroy">
+                        <img class="small-avatar" src="https://avatars0.githubusercontent.com/u/7574801?v=4" /> Brennan
+                        (BrennanConroy)
+                    </a>
+                    <a href="#pr-content-for-jkotalik" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-jkotalik" data-toggle="list" role="tab" aria-controls="jkotalik">
+                        <img class="small-avatar" src="https://avatars0.githubusercontent.com/u/8302101?v=4" /> Justin
+                        Kotalik (jkotalik)
+                    </a>
+                    <a href="#pr-content-for-ryanbrandenburg" class="list-group-item list-group-item-action"
+                        id="pr-list-item-for-ryanbrandenburg" data-toggle="list" role="tab"
+                        aria-controls="ryanbrandenburg">
+                        <img class="small-avatar" src="https://avatars0.githubusercontent.com/u/14987221?v=4" /> Ryan
+                        Brandenburg (ryanbrandenburg)
+                    </a>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="tab-content" id="pr-content">
+                    <div class="tab-pane fade" id="pr-content-for-BrennanConroy" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-BrennanConroy">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12931"
+                                    target="_blank"><strong>aspnet/AspNetCore#12931</strong>
+                                    Add test for supported scenario</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12898"
+                                    target="_blank"><strong>aspnet/AspNetCore#12898</strong>
+                                    Test ValueTask hub methods</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12742"
+                                    target="_blank"><strong>aspnet/AspNetCore#12742</strong>
+                                    [SignalR] Change log levels</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="pr-content-for-jkotalik" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-jkotalik">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12981"
+                                    target="_blank"><strong>aspnet/AspNetCore#12981</strong>
+                                    Fix Max Request Body Size test</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12816"
+                                    target="_blank"><strong>aspnet/AspNetCore#12816</strong>
+                                    Use target architecture for building ANCM symbol packages.</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12807"
+                                    target="_blank"><strong>aspnet/AspNetCore#12807</strong>
+                                    Always load hostfxr.dll by absolute path</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12737"
+                                    target="_blank"><strong>aspnet/AspNetCore#12737</strong>
+                                    Only use read Pipe when running on Http2. </a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12984"
+                                    target="_blank"><strong>aspnet/AspNetCore#12984</strong>
+                                    Fix retries with port selection</a>
+                            </li>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12955"
+                                    target="_blank"><strong>aspnet/AspNetCore#12955</strong>
+                                    Update patch config for 2.2</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="pr-content-for-ryanbrandenburg" role="tabpanel"
+                        aria-labelledby="pr-list-item-for-ryanbrandenburg">
+                        <ul>
+                            <li><a href="https://github.com/aspnet/AspNetCore/pull/12900"
+                                    target="_blank"><strong>aspnet/AspNetCore#12900</strong>
+                                    Allow retries of SSL exceptions</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="pt-2">Active Issues</h3>
+
+        <strong>Closed</strong> refers to issues that are closed but do not have the <code>accepted</code> label
+        applied.
+        <strong>Incomplete</strong> is the total of both <strong>Closed</strong> and <strong>Open</strong>.
+
+        <table class="table">
+            <thead>
+                <th scope="col">Area</th>
+                <th scope="col">Open</th>
+                <th scope="col">Closed</th>
+                <th scope="col">Incomplete</th>
+                <th scope="col">Accepted</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row"><code>area-signalr</code></th>
+                    <td>5</td>
+                    <td>1</td>
+                    <td>6</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code>area-servers</code></th>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>11</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code>area-hosting</code></th>
+                    <td>3</td>
+                    <td>0</td>
+                    <td>3</td>
+                    <td>0</td>
+                </tr>
+                <tr class="table-info">
+                    <th scope="row">Total</th>
+                    <td>13</td>
+                    <td>7</td>
+                    <td>20</td>
+                    <td>0</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="pt-2">Burndown</h3>
+
+        <canvas id="burndown-chart-host"></canvas>
+
+        <table class="table">
+            <thead>
+                <th scope="col">Date</th>
+                <th scope="col">area-hosting</th>
+                <th scope="col">area-servers</th>
+                <th scope="col">area-signalr</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row"><strong>2019-08-09</strong></td>
+                    <td>3</td>
+                    <td>5</td>
+                    <td>5</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"
+        integrity="sha256-xKeoJ50pzbUGkpQxDYHD7o7hxe0LaOGeguUidbq6vis=" crossorigin="anonymous"></script>
+
+    <script>
+        // Raw Burndown Data
+        window.burndownData = {
+            areas: [
+                "area-hosting",
+                "area-servers",
+                "area-signalr",
+            ],
+            weeks: [
+                {
+                    week: "2019-08-09",
+                    areas: [
+                        { label: "area-hosting", open: 3 },
+                        { label: "area-servers", open: 5 },
+                        { label: "area-signalr", open: 5 },
+                    ],
+                },
+            ]
+        };
+    </script>
+
+    <script type="text/javascript">
+        var chartColors = [
+        /* blue */ 'rgb(54, 162, 235)',
+        /* yellow */ 'rgb(255, 205, 86)',
+        /* orange */ 'rgb(255, 159, 64)',
+        /* green */ 'rgb(75, 192, 192)',
+        /* purple */ 'rgb(153, 102, 255)',
+        /* red */ 'rgb(255, 99, 132)',
+        ];
+
+        function renderBurndown(host, burndownData) {
+            var lineData = [];
+            var barDataSets = [];
+            var counter = 0;
+            for (var area of burndownData.areas) {
+                var areaData = [];
+                for (var week of burndownData.weeks) {
+                    var weekArea = week.areas.find(a => a.label === area);
+                    areaData.push(weekArea.open);
+                }
+
+                barDataSets.unshift({
+                    label: area,
+                    backgroundColor: chartColors[counter % chartColors.length],
+                    data: areaData,
+                    stack: "Stack 0"
+                });
+                counter += 1;
+            }
+
+            for (var week of burndownData.weeks) {
+                var count = 0;
+                for (var area of week.areas) {
+                    count += area.open
+                }
+                lineData.push(count);
+            }
+
+            var labels = burndownData.weeks.map(w => w.week);
+
+            var chart = new Chart(host, {
+                type: "bar",
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: "All Issues",
+                            data: lineData,
+                            borderColor: 'rgb(201, 203, 207)',
+                            backgroundColor: 'rgba(255, 255, 255, 0)',
+                            type: 'line'
+                        },
+                        ...barDataSets
+                    ]
+                }
+            });
+        }
+
+        // Expect the data to be present in window.burndownData
+        if (typeof window.burndownData !== "object") {
+            console.error("Missing burndown data!");
+        } else {
+            var host = document.getElementById("burndown-chart-host");
+            if (!host) {
+                console.error("Missing burndown chart host!");
+            }
+            else {
+                renderBurndown(host, window.burndownData);
+            }
+        }
+    </script>
+</body>
+
+</html>

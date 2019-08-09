@@ -1,0 +1,167 @@
+{
+  "name": "KCore",
+  "reportDate": "2019-08-09",
+  "milestone": [
+    {
+      "name": "3.0.0-preview9",
+      "branchCloses": "2019-08-21",
+      "workDaysRemaining": 9
+    }
+  ],
+  "externalContributors": [],
+  "internalContributors": [
+    {
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/7574801?v=4",
+      "displayName": "Brennan (BrennanConroy)",
+      "profileUrl": "https://github.com/BrennanConroy",
+      "login": "BrennanConroy",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12931,
+          "title": "Add test for supported scenario",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12931"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12898,
+          "title": "Test ValueTask hub methods",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12898"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12742,
+          "title": "[SignalR] Change log levels",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12742"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/8302101?v=4",
+      "displayName": "Justin Kotalik (jkotalik)",
+      "profileUrl": "https://github.com/jkotalik",
+      "login": "jkotalik",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12981,
+          "title": "Fix Max Request Body Size test",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12981"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12816,
+          "title": "Use target architecture for building ANCM symbol packages.",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12816"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12807,
+          "title": "Always load hostfxr.dll by absolute path",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12807"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12737,
+          "title": "Only use read Pipe when running on Http2. ",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12737"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12984,
+          "title": "Fix retries with port selection",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12984"
+        },
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12955,
+          "title": "Update patch config for 2.2",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12955"
+        }
+      ]
+    },
+    {
+      "avatarUrl": "https://avatars0.githubusercontent.com/u/14987221?v=4",
+      "displayName": "Ryan Brandenburg (ryanbrandenburg)",
+      "profileUrl": "https://github.com/ryanbrandenburg",
+      "login": "ryanbrandenburg",
+      "pullRequests": [
+        {
+          "repoOwner": "aspnet",
+          "repoName": "AspNetCore",
+          "number": 12900,
+          "title": "Allow retries of SSL exceptions",
+          "url": "https://github.com/aspnet/AspNetCore/pull/12900"
+        }
+      ]
+    }
+  ],
+  "areas": [
+    {
+      "label": "area-signalr",
+      "open": 5,
+      "closed": 1,
+      "incomplete": 6,
+      "accepted": 0
+    },
+    {
+      "label": "area-servers",
+      "open": 5,
+      "closed": 6,
+      "incomplete": 11,
+      "accepted": 0
+    },
+    {
+      "label": "area-hosting",
+      "open": 3,
+      "closed": 0,
+      "incomplete": 3,
+      "accepted": 0
+    }
+  ],
+  "totalOpen": 13,
+  "totalClosed": 7,
+  "totalIncomplete": 20,
+  "totalAccepted": 0,
+  "burndown": {
+    "areas": [
+      "area-hosting",
+      "area-servers",
+      "area-signalr"
+    ],
+    "weeks": [
+      {
+        "date": "2019-08-09",
+        "areas": [
+          {
+            "label": "area-hosting",
+            "open": 3,
+            "closed": 0,
+            "accepted": 0
+          },
+          {
+            "label": "area-servers",
+            "open": 5,
+            "closed": 6,
+            "accepted": 0
+          },
+          {
+            "label": "area-signalr",
+            "open": 5,
+            "closed": 1,
+            "accepted": 0
+          }
+        ]
+      }
+    ]
+  }
+}

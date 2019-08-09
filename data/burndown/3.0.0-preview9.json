@@ -1,0 +1,88 @@
+{
+  "milestone": "3.0.0-preview9",
+  "weeks": [
+    {
+      "endDate": "2019-08-09T09:42:24.9835424-07:00",
+      "areas": [
+        {
+          "label": "area-blazor",
+          "open": 25,
+          "closed": 60,
+          "accepted": 0
+        },
+        {
+          "label": "area-commandlinetools",
+          "open": 1,
+          "closed": 0,
+          "accepted": 0
+        },
+        {
+          "label": "area-grpc",
+          "open": 1,
+          "closed": 1,
+          "accepted": 0
+        },
+        {
+          "label": "area-hosting",
+          "open": 3,
+          "closed": 0,
+          "accepted": 0
+        },
+        {
+          "label": "area-identity",
+          "open": 2,
+          "closed": 0,
+          "accepted": 0
+        },
+        {
+          "label": "area-infrastructure",
+          "open": 10,
+          "closed": 2,
+          "accepted": 0
+        },
+        {
+          "label": "area-middleware",
+          "open": 1,
+          "closed": 0,
+          "accepted": 0
+        },
+        {
+          "label": "area-mvc",
+          "open": 23,
+          "closed": 27,
+          "accepted": 0
+        },
+        {
+          "label": "area-platform",
+          "open": 4,
+          "closed": 0,
+          "accepted": 0
+        },
+        {
+          "label": "area-security",
+          "open": 6,
+          "closed": 0,
+          "accepted": 0
+        },
+        {
+          "label": "area-servers",
+          "open": 5,
+          "closed": 6,
+          "accepted": 0
+        },
+        {
+          "label": "area-signalr",
+          "open": 5,
+          "closed": 1,
+          "accepted": 0
+        },
+        {
+          "label": "area-websockets",
+          "open": 1,
+          "closed": 0,
+          "accepted": 0
+        }
+      ]
+    }
+  ]
+}
